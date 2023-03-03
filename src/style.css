@@ -21,8 +21,19 @@ body {
   padding: 1em;
 }
 
+li {
+  list-style-type: none;
+}
+
+.tasks li,
+.projects li {
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
+}
+
 .projects p {
   font-weight: bold;
+  font-size: 1.3em;
 }
 
 .main-content {
