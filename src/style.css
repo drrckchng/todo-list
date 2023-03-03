@@ -6,7 +6,7 @@ body {
   background-color: #e8e8e8;
   display: flex;
   justify-content: space-between;
-  border-bottom: 5px green;
+  border-bottom: solid 2px green;
 }
 
 .content {
