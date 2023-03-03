@@ -46,8 +46,14 @@ li {
 .main-content {
   background-color: #ececec;
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
 }
 
 .main-content .section {
+  font-size: 1.2em;
+  padding: 1em;
+  margin: 1em;
+  text-align: center;
+  background-color: green;
 }
