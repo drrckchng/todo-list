@@ -18,6 +18,11 @@ body {
 }
 
 .side-bar {
+  padding: 1em;
+}
+
+.projects p {
+  font-weight: bold;
 }
 
 .main-content {
