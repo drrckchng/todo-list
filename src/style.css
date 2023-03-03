@@ -1,5 +1,8 @@
 body {
   font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
@@ -11,6 +14,7 @@ body {
 
 .content {
   display: flex;
+  flex-grow: 1;
 }
 
 .side-bar {
