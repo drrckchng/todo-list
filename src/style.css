@@ -10,6 +10,13 @@ body {
   display: flex;
   justify-content: space-between;
   border-bottom: solid 2px green;
+  align-items: center;
+  padding: 1em;
+}
+
+.header .logo {
+  font-weight: bold;
+  font-size: 2em;
 }
 
 .content {
