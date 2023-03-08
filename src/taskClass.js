@@ -6,6 +6,9 @@ export class Task {
     this.starred = starred;
   }
   tasks = [];
+  addTask(task) {
+    tasks.push(task);
+  }
   // Method to check date
   // Method to change name
   // Method to change desc
