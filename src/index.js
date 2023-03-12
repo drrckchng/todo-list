@@ -13,4 +13,6 @@ console.log(projectsTracker);
 // Call upon function to set event listeners from manipulateDOM
   // From there, have it call a function to return filtered list of tasks
 
+// Call method to select "All Tasks" view
+//
  
