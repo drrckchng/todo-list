@@ -1,17 +1,26 @@
-// import {Task} from './taskClass.js';
+import {Task} from './taskClass.js';
 import {Project} from './projectClass.js';
 
 export const projectsTracker = [];
+export const tasksTracker = [];
 
 export function createInitialProject() {
-  const initialProject = new Project("Todo List");
+  const initialProject = new Project("Todo List"); // project name should be pulled from DOM on creation
   // Create test task for testing purposes
   // const testTask = new Task("Test task", "Please do ASAP", "2023-03-03", true);
   // initialProject.addTask(testTask);
 
-  // Print project
-  console.log(initialProject.projectId);
-
   projectsTracker.push(initialProject);
+
+  // call method to create DOM element and append to side bar
+}
+
+export function createTask() {
+  const task = new Task("Test", "this is a test", "2023-03-12", true); // task properties pulled from DOM on creation
+  // get currently selected project ID 
+  const selectedProjectId = 0; // test case
+  task.setProjectId(selectedProjectId);
+  // filter all tasks and select that match project ID
+  // set projectId property in the task
 }
 
