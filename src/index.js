@@ -5,14 +5,11 @@ import "@fontsource/lato/900.css";
 // import {Project} from './projectClass.js';
 import {projectsTracker, createInitialProject} from './createItems.js';
 // import * from './manipulateDOM.js';
-//
 
+// Initial page load
 createInitialProject();
-console.log(projectsTracker);
-
+console.log(projectsTracker); // test purposes
+// Call method to select "All Tasks" view
 // Call upon function to set event listeners from manipulateDOM
   // From there, have it call a function to return filtered list of tasks
-
-// Call method to select "All Tasks" view
-//
  
