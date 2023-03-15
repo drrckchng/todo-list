@@ -2,16 +2,13 @@
 import {filterTasks} from './filter.js';
 
 export function addListeners() {
-  // Grab elements and add event listeners
-  const filterTaskButtons = document.querySelector(".side-bar .tasks").children;
-
-  document.getElementById("filter-all").addEventListener("click", filterTasks);
-  // const filterTodayTasks = document.getElementById("filter-today");
-  // const filterWeekTasks = document.getElementById("filter-week");
-  // const filterStarred = document.getElementById("filter-starred");
+  const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
+  filterTaskButtons.forEach(function(button) {
+    button.addEventListener("click", filterTasks);
+  });
 }
 
-// function addProject() {
+// export function addProject() {
 //   // create new div and append to sidebar
 //   // create new project object (from createItems.js)
 //   // get project ID
