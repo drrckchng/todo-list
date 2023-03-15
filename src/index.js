@@ -4,9 +4,10 @@ import "@fontsource/lato/900.css";
 // import {Task} from './taskClass.js';
 // import {Project} from './projectClass.js';
 import {projectsTracker, createInitialProject} from './createItems.js';
-// import * from './manipulateDOM.js';
+import {addListeners} from './manipulateDOM.js';
 
 // Initial page load
+addListeners();
 createInitialProject();
 console.log(projectsTracker); // test purposes
 // Call method to select "All Tasks" view
