@@ -1,4 +1,3 @@
-// Add import for task filter script
 import {filterTasks} from './filter.js';
 
 export function addListeners() {
