@@ -6,12 +6,7 @@ export const tasksTracker = [];
 
 export function createInitialProject() {
   const initialProject = new Project("Todo List"); // project name should be pulled from DOM on creation
-  // Create test task for testing purposes
-  // const testTask = new Task("Test task", "Please do ASAP", "2023-03-03", true);
-  // initialProject.addTask(testTask);
-
   projectsTracker.push(initialProject);
-
   // call method to create DOM element and append to side bar
 }
 
