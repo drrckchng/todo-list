@@ -1,4 +1,4 @@
-import {filterTasks} from './filter.js';
+import { filterTasks } from './filter.js';
 
 export function addListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);

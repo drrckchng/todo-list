@@ -3,8 +3,8 @@ import "@fontsource/lato";
 import "@fontsource/lato/900.css";
 // import {Task} from './taskClass.js';
 // import {Project} from './projectClass.js';
-import {projectsTracker, createInitialProject} from './createItems.js';
-import {addListeners} from './manipulateDOM.js';
+import { projectsTracker, createInitialProject } from './createItems.js';
+import { addListeners } from './manipulateDOM.js';
 
 // Initial page load
 addListeners();

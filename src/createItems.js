@@ -1,5 +1,5 @@
-import {Task} from './taskClass.js';
-import {Project} from './projectClass.js';
+import { Task } from './taskClass.js';
+import { Project } from './projectClass.js';
 
 export const projectsTracker = [];
 export const tasksTracker = [];
