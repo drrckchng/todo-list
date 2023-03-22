@@ -1,5 +1,6 @@
 import { Task } from './taskClass.js';
 import { Project } from './projectClass.js';
+import { addProjectDiv } from './manipulateDOM.js';
 
 export const projectsTracker = [];
 export const tasksTracker = [];
@@ -7,7 +8,7 @@ export const tasksTracker = [];
 export function createProject(name) {
   const project = new Project(name); // project name should be pulled from DOM on creation
   projectsTracker.push(project);
-  // call method to create DOM element and append to side bar
+  addProjectDiv(project);
 }
 
 export function deleteProject(index) {
