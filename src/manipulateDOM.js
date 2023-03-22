@@ -13,5 +13,6 @@ export function addProjectDiv(project) {
   projectsList.appendChild(projectItem);
   projectItem.textContent = project.name;
   projectItem.dataset.projectId = project.projectId;
+  projectItem.classList.add("project-item");
   // add listener that will filter tasks that match project id
 }
