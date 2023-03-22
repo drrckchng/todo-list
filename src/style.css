@@ -33,14 +33,16 @@ li {
 }
 
 .tasks li,
-.projects li {
+.projects li,
+.project-item {
   font-size: 1.1em;
   margin-bottom: 0.5em;
   padding: 0.3em;
 }
 
 .tasks li:hover,
-.projects li:hover {
+.projects li:hover,
+.project-item:hover {
   cursor: pointer;
   background-color: #ececec;
 }
@@ -48,6 +50,11 @@ li {
 .projects p {
   font-weight: bold;
   font-size: 1.3em;
+}
+
+.projects-list {
+  margin: 0;
+  padding: 0;
 }
 
 .main-content {
