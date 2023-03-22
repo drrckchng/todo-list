@@ -1,10 +1,19 @@
 import { filterTasks } from './filter.js';
 
 export function addListeners() {
+  addFilterListeners();
+  addProjectListener();
+}
+
+function addFilterListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
   filterTaskButtons.forEach(function(button) {
     button.addEventListener("click", filterTasks);
   });
+}
+
+function addProjectListener() {
+  console.log("Add projects listener");
 }
 
 export function addProjectDiv(project) {
