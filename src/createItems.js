@@ -4,9 +4,9 @@ import { Project } from './projectClass.js';
 export const projectsTracker = [];
 export const tasksTracker = [];
 
-export function createInitialProject() {
-  const initialProject = new Project("Todo List"); // project name should be pulled from DOM on creation
-  projectsTracker.push(initialProject);
+export function createProject(name) {
+  const project = new Project(name); // project name should be pulled from DOM on creation
+  projectsTracker.push(project);
   // call method to create DOM element and append to side bar
 }
 

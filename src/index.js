@@ -3,12 +3,12 @@ import "@fontsource/lato";
 import "@fontsource/lato/900.css";
 // import {Task} from './taskClass.js';
 // import {Project} from './projectClass.js';
-import { projectsTracker, tasksTracker, createInitialProject, createTask } from './createItems.js';
+import { projectsTracker, tasksTracker, createProject, createTask } from './createItems.js';
 import { addListeners } from './manipulateDOM.js';
 
 // Initial page load
 addListeners();
-createInitialProject();
+createProject("Test Project");
 createTask("Task One", "This is a task", "2023-01-01", true, 0);
 console.log(projectsTracker); // test purposes
 console.log(tasksTracker); // test purposes
