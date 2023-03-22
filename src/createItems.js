@@ -10,10 +10,9 @@ export function createInitialProject() {
   // call method to create DOM element and append to side bar
 }
 
-export function createTask() {
-  const task = new Task("Test", "this is a test", "2023-03-12", true); // task properties pulled from DOM on creation
+export function createTask(name, desc, date, starred, selectedProjectId) {
+  const task = new Task(name, desc, date, starred); // task properties pulled from DOM on creation
   // get currently selected project ID 
-  const selectedProjectId = 0; // test case
   task.projectId = selectedProjectId;
   tasksTracker.push(task);
   // filter all tasks and select that match project ID
