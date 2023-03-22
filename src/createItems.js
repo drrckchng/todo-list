@@ -10,6 +10,11 @@ export function createProject(name) {
   // call method to create DOM element and append to side bar
 }
 
+export function deleteProject(index) {
+  projectsTracker.splice(index, 1);
+  // call another function to delete all tasks with this projectId
+}
+
 export function createTask(name, desc, date, starred, selectedProjectId) {
   const task = new Task(name, desc, date, starred); // task properties pulled from DOM on creation
   // get currently selected project ID 
