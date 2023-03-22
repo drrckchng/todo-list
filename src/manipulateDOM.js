@@ -8,10 +8,10 @@ export function addListeners() {
 }
 
 export function addProjectDiv(project) {
-  const sidebar = document.querySelector(".side-bar .projects")[0];
-  const projectTab = document.createElement("div");
-  // append projectTab to sidebar (below p but above add project btn)
-  const projectId = project.projectId;
-  // assign some sort of attribute to projectId
+  const projectsList = document.getElementById("projects-list");
+  const projectItem = document.createElement("div");
+  projectsList.appendChild(projectItem);
+  projectItem.textContent = project.name;
+  projectItem.dataset.projectId = project.projectId;
   // add listener that will filter tasks that match project id
 }
