@@ -13,7 +13,8 @@ function addFilterListeners() {
 }
 
 function addProjectListener() {
-  console.log("Add projects listener");
+  const addProjectButton = document.querySelector(".projects li");
+  // addProjectListener.addEventListener("click", newProject);
 }
 
 export function addProjectDiv(project) {
