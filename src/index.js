@@ -8,7 +8,7 @@ import { addListeners } from './manipulateDOM.js';
 
 // Initial page load
 addListeners();
-createProject("Test Project");
+createProject("Todo List");
 createTask("Task One", "This is a task", "2023-01-01", true, 0);
 console.log(projectsTracker); // test purposes
 console.log(tasksTracker); // test purposes
