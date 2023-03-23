@@ -1,20 +1,26 @@
 import { tasksTracker } from './createItems.js';
-import { format } from 'date-fns';
+import { format, differenceInDays } from 'date-fns';
 
 export function filterTasks(event) {
+  const today = new Date();
   const filterSetting = event.target.id;
-  if(filterSetting === 'filter-all') {
-    console.log(tasksTracker);
-  } else if(filterSetting === 'filter-today') {
-    const array = [];
+  const filteredTasks = [];
+  if(filterSetting === 'filter-today') {
     tasksTracker.forEach(task => {
-      if(task.date === format(new Date(), 'yyyy-MM-dd')) {
-        array.push(task);
+      if(differenceInDays(today, task.date) === 0) {
+        filteredTasks.push(task);
       }
     });
-    console.log(array);
   } else if(filterSetting === 'filter-week') {
+    tasksTracker.forEach(task => {
+      if(differenceInDays(today, task.date) <= 7) {
+        filteredTasks.push(task);
+      }
+    });
   } else if(filterSetting === 'filter-starred') {
+  } else if(filterSetting === 'filter-all') {
+    console.log(tasksTracker); // change to return later
   }
+  console.log(filteredTasks); // change to return later
 }
 
