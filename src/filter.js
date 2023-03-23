@@ -18,6 +18,11 @@ export function filterTasks(event) {
       }
     });
   } else if(filterSetting === 'filter-starred') {
+    tasksTracker.forEach(task => {
+      if(task.starred === true) {
+        filteredTasks.push(task);
+      }
+    });
   } else if(filterSetting === 'filter-all') {
     console.log(tasksTracker); // change to return later
   }
