@@ -28,6 +28,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "@fontsource/lato": "^4.5.10"
+    "@fontsource/lato": "^4.5.10",
+    "date-fns": "^2.29.3"
   }
 }
