@@ -26,3 +26,27 @@ export function addProjectDiv(project) {
   projectItem.classList.add("project-item");
   // add listener that will filter tasks that match project id
 }
+
+export function displayTask(tasks) {
+  clearTasks();
+  const taskArea = document.getElementById("displayed-tasks");
+  tasks.forEach((task => {
+    const taskDiv = document.createElement("div");
+    createTaskItem(taskDiv, task.name);
+    createTaskItem(taskDiv, task.desc);
+    createTaskItem(taskDiv, task.date);
+    createTaskItem(taskDiv, task.starred);
+    taskArea.appendChild(taskDiv);
+  }));
+}
+
+function createTaskItem(parent, property) {
+  const taskProperty = document.createElement("p");
+  taskProperty.textContent = property;
+  parent.appendChild(taskProperty);
+}
+
+function clearTasks() {
+  const taskArea = document.getElementById("displayed-tasks");
+  taskArea.textContent = '';
+}
