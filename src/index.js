@@ -11,6 +11,11 @@ import { addListeners } from './manipulateDOM.js';
 addListeners();
 createProject("Todo List");
 
+// Click on all tasks button
+window.onload = function() {
+  document.getElementById("filter-all").click();
+}
+
 // Test cases
 createTask("Task One", "This is a task", new Date(), true, 0);
 createTask("Task One", "This is a task", new Date(2023, 2, 1), true, 0);
