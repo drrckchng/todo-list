@@ -1,5 +1,5 @@
 import { tasksTracker } from './createItems.js';
-import { format, differenceInDays } from 'date-fns';
+import { differenceInDays } from 'date-fns';
 import { displayTask } from './manipulateDOM.js';
 
 export function filterTasks(event) {
