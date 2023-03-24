@@ -1,7 +1,7 @@
 import './style.css';
 import "@fontsource/lato";
 import "@fontsource/lato/900.css";
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 // import {Task} from './taskClass.js';
 // import {Project} from './projectClass.js';
 import { projectsTracker, tasksTracker, createProject, createTask, deleteProject } from './createItems.js';
