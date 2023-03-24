@@ -10,12 +10,14 @@ import { addListeners } from './manipulateDOM.js';
 // Initial page load
 addListeners();
 createProject("Todo List");
+
+// Test cases
 createTask("Task One", "This is a task", new Date(), true, 0);
 createTask("Task One", "This is a task", new Date(2023, 2, 1), true, 0);
 createTask("Task One", "This is a task", new Date(2023, 2, 20), true, 0);
 createTask("Task One", "This is a task", new Date(2023, 2, 20), false, 0);
-console.log(projectsTracker); // test purposes
-console.log(tasksTracker); // test purposes
+console.log(projectsTracker);
+console.log(tasksTracker);
 
 // Call method to select "All Tasks" view
 // Call upon function to set event listeners from manipulateDOM
