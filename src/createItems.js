@@ -16,10 +16,10 @@ export function deleteProject(index) {
   // call another function to delete all tasks with this projectId
 }
 
-export function createTask(name, desc, date, starred, selectedProjectId) {
+export function createTask(name, desc, date, starred, targetProjectId) {
   const task = new Task(name, desc, date, starred); // task properties pulled from DOM on creation
   // get currently selected project ID 
-  task.projectId = selectedProjectId;
+  task.projectId = targetProjectId;
   tasksTracker.push(task);
   // filter all tasks and select that match project ID
   // set projectId property in the task
