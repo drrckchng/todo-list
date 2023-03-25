@@ -11,7 +11,7 @@ import { addListeners } from './manipulateDOM.js';
 addListeners();
 createProject("Todo List");
 
-// Click on all tasks button
+// Click on "All Tasks" button
 window.onload = function() {
   document.getElementById("filter-all").click();
 }
@@ -23,8 +23,3 @@ createTask("Task One", "This is a task", new Date(2023, 2, 20), true, 0);
 createTask("Task One", "This is a task", new Date(2023, 2, 20), false, 0);
 console.log(projectsTracker);
 console.log(tasksTracker);
-
-// Call method to select "All Tasks" view
-// Call upon function to set event listeners from manipulateDOM
-  // From there, have it call a function to return filtered list of tasks
- 
