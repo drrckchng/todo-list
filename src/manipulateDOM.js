@@ -1,8 +1,7 @@
-import { filterTasks } from './filter.js';
+import { filterTasks, filterProjectTasks } from './filter.js';
 
 export function addListeners() {
   addFilterListeners();
-  addProjectListener();
 }
 
 function addFilterListeners() {
@@ -12,20 +11,18 @@ function addFilterListeners() {
   });
 }
 
-function addProjectListener() {
-  const addProjectButton = document.querySelector(".projects li");
-  // addProjectListener.addEventListener("click", newProject);
-}
-
+// Add new project to the side bar
 export function addProjectDiv(project) {
   const projectsList = document.getElementById("projects-list");
   const projectItem = document.createElement("div");
   projectsList.appendChild(projectItem);
   projectItem.textContent = project.name;
-  projectItem.dataset.projectId = project.projectId;
+  projectItem.dataset.projectId = project.projectId; // Set custom dataset attribute
   projectItem.classList.add("project-item");
-  // add listener that will filter tasks that match project id
+
+  projectItem.addEventListener("click", filterProjectTasks);
 }
+
 
 export function displayTask(tasks) {
   clearTasks();
