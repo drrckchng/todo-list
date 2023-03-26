@@ -12,6 +12,8 @@ export function createProject(name) {
 }
 
 export function checkValidProject(event) {
+  console.log(event.target.form[0]);
+  event.preventDefault();
 }
 
 export function deleteProject(index) {

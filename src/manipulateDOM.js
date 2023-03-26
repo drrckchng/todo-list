@@ -18,6 +18,10 @@ function addProjectForm() {
   input.setAttribute("name", "text");
   const confirmButton = document.createElement("button");
   confirmButton.textContent = "Add";
+  const confirmButton = document.createElement("input");
+  confirmButton.setAttribute("type", "submit");
+  confirmButton.setAttribute("value", "Add");
+  confirmButton.addEventListener("click", checkValidProject)
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Cancel";
   deleteButton.addEventListener("click", deleteProjectForm);
