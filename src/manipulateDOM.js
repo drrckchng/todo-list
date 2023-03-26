@@ -1,13 +1,29 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
 
 export function addListeners() {
-
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
   filterTaskButtons.forEach(function(button) {
     button.addEventListener("click", filterTasks);
   });
 
   document.getElementById("add-project").addEventListener("click", addProjectForm);
+}
+
+function addProjectForm() {
+  const projectsList = document.getElementById("projects-list");
+  const projectForm = document.createElement("div");
+
+  const input = document.createElement("input");
+  input.setAttribute("name", "text");
+  const confirmButton = document.createElement("button");
+  confirmButton.textContent = "Add";
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Cancel";
+
+  projectForm.append(input, confirmButton, deleteButton);
+
+  projectsList.appendChild(projectForm);
+
 }
 
 // Add new project to the side bar
