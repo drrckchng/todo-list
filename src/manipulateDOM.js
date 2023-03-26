@@ -12,16 +12,16 @@ export function addListeners() {
 
 function addProjectForm() {
   const projectsList = document.getElementById("projects-list");
-  const projectForm = document.createElement("div");
+  const projectForm = document.createElement("form");
 
   const input = document.createElement("input");
-  input.setAttribute("name", "text");
-  const confirmButton = document.createElement("button");
-  confirmButton.textContent = "Add";
+  input.setAttribute("type", "text");
+
   const confirmButton = document.createElement("input");
   confirmButton.setAttribute("type", "submit");
   confirmButton.setAttribute("value", "Add");
   confirmButton.addEventListener("click", checkValidProject)
+
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Cancel";
   deleteButton.addEventListener("click", deleteProjectForm);
@@ -31,6 +31,7 @@ function addProjectForm() {
   projectsList.appendChild(projectForm);
 
 }
+
 
 function deleteProjectForm(event) {
   event.target.parentElement.remove();
