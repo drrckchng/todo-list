@@ -1,4 +1,5 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
+import { checkValidProject } from './createItems.js';
 
 export function addListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
