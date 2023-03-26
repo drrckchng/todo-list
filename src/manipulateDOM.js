@@ -29,10 +29,10 @@ export function displayTask(tasks) {
   const taskArea = document.getElementById("displayed-tasks");
   tasks.forEach((task => {
     const taskDiv = document.createElement("div");
-    createTaskItem(taskDiv, task.name);
-    createTaskItem(taskDiv, task.desc);
-    createTaskItem(taskDiv, task.date);
-    createTaskItem(taskDiv, task.starred);
+    const properties = [task.name, task.desc, task.date, task.starred];
+    properties.forEach(prop => {
+      createTaskItem(taskDiv, prop);
+    });
     taskArea.appendChild(taskDiv);
   }));
 }
