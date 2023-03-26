@@ -6,6 +6,8 @@ export function addListeners() {
   filterTaskButtons.forEach(function(button) {
     button.addEventListener("click", filterTasks);
   });
+
+  document.getElementById("add-project").addEventListener("click", addProjectForm);
 }
 
 // Add new project to the side bar
