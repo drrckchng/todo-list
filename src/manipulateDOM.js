@@ -34,7 +34,7 @@ function addProjectForm() {
 }
 
 
-function deleteProjectForm(event) {
+export function deleteProjectForm(event) {
   event.target.parentElement.remove();
 }
 

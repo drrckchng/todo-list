@@ -1,6 +1,6 @@
 import { Task } from './taskClass.js';
 import { Project } from './projectClass.js';
-import { addProjectDiv } from './manipulateDOM.js';
+import { addProjectDiv, deleteProjectForm } from './manipulateDOM.js';
 
 export const projectsTracker = [];
 export const tasksTracker = [];
@@ -12,7 +12,13 @@ export function createProject(name) {
 }
 
 export function checkValidProject(event) {
-  console.log(event.target.form[0]);
+  const projectName = event.target.form[0].value;
+  if(projectName === "") {
+    alert("Please enter a project name");
+  } else {
+    createProject(projectName);
+    deleteProjectForm(event);
+  }
   event.preventDefault();
 }
 
