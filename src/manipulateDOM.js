@@ -16,6 +16,7 @@ function addProjectForm() {
 
   const input = document.createElement("input");
   input.setAttribute("type", "text");
+  input.setAttribute("placeholder", "Project name...");
 
   const confirmButton = document.createElement("input");
   confirmButton.setAttribute("type", "submit");
