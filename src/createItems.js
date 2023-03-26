@@ -11,6 +11,9 @@ export function createProject(name) {
   addProjectDiv(project);
 }
 
+export function checkValidProject(event) {
+}
+
 export function deleteProject(index) {
   projectsTracker.splice(index, 1);
   // call another function to delete all tasks with this projectId
