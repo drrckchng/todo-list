@@ -19,11 +19,16 @@ function addProjectForm() {
   confirmButton.textContent = "Add";
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Cancel";
+  deleteButton.addEventListener("click", deleteProjectForm);
 
   projectForm.append(input, confirmButton, deleteButton);
 
   projectsList.appendChild(projectForm);
 
+}
+
+function deleteProjectForm(event) {
+  event.target.parentElement.remove();
 }
 
 // Add new project to the side bar
