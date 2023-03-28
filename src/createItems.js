@@ -13,7 +13,7 @@ export function createProject(name) {
 
 export function checkValidProject(event) {
   const projectName = event.target.form[0].value;
-  if(projectName === "") {
+  if (projectName === "") {
     alert("Please enter a project name");
   } else {
     createProject(projectName);
@@ -22,17 +22,16 @@ export function checkValidProject(event) {
   event.preventDefault();
 }
 
+// TODO: Add a function call to delete all tasks matching projectId
 export function deleteProject(index) {
   projectsTracker.splice(index, 1);
-  // call another function to delete all tasks with this projectId
 }
 
+// TODO: Implement way to append task to a projetId
 export function createTask(name, desc, date, starred, targetProjectId) {
   const task = new Task(name, desc, date, starred); // task properties pulled from DOM on creation
-  // get currently selected project ID 
+  // get currently selected project ID from DOM
   task.projectId = targetProjectId;
   tasksTracker.push(task);
-  // filter all tasks and select that match project ID
-  // set projectId property in the task
 }
 
