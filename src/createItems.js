@@ -1,7 +1,8 @@
 import { Task } from './taskClass.js';
 import { Project } from './projectClass.js';
 import { addProjectDiv, deleteProjectForm, deleteTaskForm } from './manipulateDOM.js';
-import { parse } from 'date-fns';
+import { parseISO } from 'date-fns';
+import { filterProjectTasks } from './filter.js';
 
 export const projectsTracker = [];
 export const tasksTracker = [];
@@ -23,7 +24,6 @@ export function checkValidProject(event) {
   event.preventDefault();
 }
 
-// TODO: Add checkValidTask to check for valid task settings
 export function checkValidTask(event) {
   const taskProperties = Array.from(event.target.form).splice(0, 4);
   const taskName = taskProperties[0].value;
@@ -31,9 +31,10 @@ export function checkValidTask(event) {
   const taskDate = taskProperties[2].value;
   const taskStarred = taskProperties[2].checked;
   if ((taskName !== "") && (taskDate !== "")) {
-    const taskDateConvert = parse(taskDate); // convert date string to date object
-    createTask(taskName, taskDesc, taskDateConvert, taskStarred, event.target.dataset.projectId);
+    const taskDateConvert = parseISO(taskDate); // convert date string to date object
+    createTask(taskName, taskDesc, taskDateConvert, taskStarred, parseInt(event.target.dataset.projectId));
     deleteTaskForm(event);
+    filterProjectTasks(event)
   } else {
     alert("Project name and date are required");
   }
