@@ -66,7 +66,10 @@ export function displayTask(tasks, targetProjectId) {
     const buttonDiv = document.getElementById("add-task");
     const addTaskButton = document.createElement("button");
     addTaskButton.textContent = "Add task";
+    addTaskButton.dataset.projectId = targetProjectId;
     buttonDiv.appendChild(addTaskButton);
+    addNewTaskListener(addTaskButton);
+
   }
 }
 
