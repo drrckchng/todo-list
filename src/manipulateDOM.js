@@ -103,7 +103,7 @@ export function deleteProjectForm(event) {
 }
 
 export function deleteTaskForm(event) {
-  console.log(event);
+  event.target.parentElement.parentElement.remove();
   event.preventDefault();
 }
 
