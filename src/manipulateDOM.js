@@ -62,11 +62,6 @@ export function displayTask(tasks, targetProjectId) {
     });
     taskArea.appendChild(taskDiv);
   }));
-
-  const addTaskButton = document.createElement("button");
-  addTaskButton.textContent = "Add task";
-  const mainContentArea = document.querySelector(".main-content");
-  mainContentArea.appendChild(addTaskButton);
 }
 
 function createTaskItem(parent, property) {
