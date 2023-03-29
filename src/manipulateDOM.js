@@ -89,6 +89,7 @@ function addTaskForm(event) {
   submitInput.setAttribute("value", "Add");
   submitInput.setAttribute("id", "form-submit");
   submitInput.addEventListener("click", checkValidTask);
+  submitInput.dataset.projectId = targetProjectId; // pass project id to attribute
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "Cancel";
   cancelButton.addEventListener("click", deleteTaskForm)
@@ -115,10 +116,8 @@ export function addProjectDiv(project) {
   projectItem.textContent = project.name;
   projectItem.dataset.projectId = project.projectId; // Set custom dataset attribute
   projectItem.classList.add("project-item");
-
   projectItem.addEventListener("click", filterProjectTasks);
 }
-
 
 export function displayTask(tasks, targetProjectId) {
   clearTasks();
