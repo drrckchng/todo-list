@@ -87,7 +87,9 @@ function addTaskForm(event) {
   submitInput.setAttribute("type", "submit");
   submitInput.setAttribute("value", "Add");
   submitInput.setAttribute("id", "form-submit");
-  submitDiv.append(submitInput);
+  const cancelButton = document.createElement("button");
+  cancelButton.textContent = "Cancel";
+  submitDiv.append(submitInput, cancelButton);
 
   newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv, submitDiv);
   displayedTasks.appendChild(newTaskForm);
