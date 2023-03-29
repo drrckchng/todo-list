@@ -22,6 +22,10 @@ export function checkValidProject(event) {
   event.preventDefault();
 }
 
+// TODO: Add checkValidTask to check for valid task settings
+export function checkValidTask(event) {
+}
+
 // TODO: Add a function call to delete all tasks matching projectId
 export function deleteProject(index) {
   projectsTracker.splice(index, 1);

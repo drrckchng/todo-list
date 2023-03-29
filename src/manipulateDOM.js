@@ -1,5 +1,5 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
-import { checkValidProject } from './createItems.js';
+import { checkValidProject, checkValidTask } from './createItems.js';
 
 export function addListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
@@ -37,8 +37,9 @@ function addNewTaskListener(button) {
   button.addEventListener("click", addTaskForm);
 }
 
-// TODO: Create form
+// TODO: Refactor...
 function addTaskForm(event) {
+  const targetProjectId = parseInt(event.target.dataset.projectId);
   const displayedTasks = document.getElementById("displayed-tasks");
   const newTaskForm = document.createElement("form");
 
@@ -87,6 +88,7 @@ function addTaskForm(event) {
   submitInput.setAttribute("type", "submit");
   submitInput.setAttribute("value", "Add");
   submitInput.setAttribute("id", "form-submit");
+  submitInput.addEventListener("click", checkValidTask);
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "Cancel";
   submitDiv.append(submitInput, cancelButton);
@@ -94,7 +96,6 @@ function addTaskForm(event) {
   newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv, submitDiv);
   displayedTasks.appendChild(newTaskForm);
 }
-
 
 export function deleteProjectForm(event) {
   event.target.parentElement.remove();
