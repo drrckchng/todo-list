@@ -33,6 +33,14 @@ function addProjectForm() {
 
 }
 
+// TODO: Add click listener to add a new task form
+function addNewTaskListener(button) {
+  button.addEventListener("click", createTaskForm);
+}
+
+function createTaskForm(event) {
+}
+
 
 export function deleteProjectForm(event) {
   event.target.parentElement.remove();
