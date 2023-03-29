@@ -62,6 +62,12 @@ export function displayTask(tasks, targetProjectId) {
     });
     taskArea.appendChild(taskDiv);
   }));
+  if (targetProjectId !== undefined) {
+    const buttonDiv = document.getElementById("add-task");
+    const addTaskButton = document.createElement("button");
+    addTaskButton.textContent = "Add task";
+    buttonDiv.appendChild(addTaskButton);
+  }
 }
 
 function createTaskItem(parent, property) {
@@ -72,5 +78,7 @@ function createTaskItem(parent, property) {
 
 function clearTasks() {
   const taskArea = document.getElementById("displayed-tasks");
-  taskArea.textContent = '';
+  const buttonArea = document.getElementById("add-task");
+  taskArea.textContent = "";
+  buttonArea.textContent = "";
 }
