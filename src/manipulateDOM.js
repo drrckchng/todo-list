@@ -51,7 +51,7 @@ export function addProjectDiv(project) {
 }
 
 
-export function displayTask(tasks) {
+export function displayTask(tasks, targetProjectId) {
   clearTasks();
   const taskArea = document.getElementById("displayed-tasks");
   tasks.forEach((task => {
@@ -62,6 +62,11 @@ export function displayTask(tasks) {
     });
     taskArea.appendChild(taskDiv);
   }));
+
+  const addTaskButton = document.createElement("button");
+  addTaskButton.textContent = "Add task";
+  const mainContentArea = document.querySelector(".main-content");
+  mainContentArea.appendChild(addTaskButton);
 }
 
 function createTaskItem(parent, property) {
