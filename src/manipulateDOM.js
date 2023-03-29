@@ -82,7 +82,14 @@ function addTaskForm(event) {
   starredInput.setAttribute("id", "form-task-starred");
   starredDiv.append(starredLabel, starredInput);
 
-  newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv);
+  const submitDiv = document.createElement("div");
+  const submitInput = document.createElement("input");
+  submitInput.setAttribute("type", "submit");
+  submitInput.setAttribute("value", "Add");
+  submitInput.setAttribute("id", "form-submit");
+  submitDiv.append(submitInput);
+
+  newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv, submitDiv);
   displayedTasks.appendChild(newTaskForm);
 }
 
