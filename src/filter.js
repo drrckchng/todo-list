@@ -8,24 +8,24 @@ export function filterTasks(event) {
   const filterSetting = event.target.id;
   const filteredTasks = [];
 
-  if(filterSetting === "filter-all") {
+  if (filterSetting === "filter-all") {
     displayTask(tasksTracker);
   } else {
-    if(filterSetting === "filter-today") {
+    if (filterSetting === "filter-today") {
       tasksTracker.forEach(task => {
-        if(differenceInDays(today, task.date) === 0) {
+        if (differenceInDays(today, task.date) === 0) {
           filteredTasks.push(task);
         }
       });
-    } else if(filterSetting === "filter-week") {
+    } else if (filterSetting === "filter-week") {
       tasksTracker.forEach(task => {
-        if(differenceInDays(today, task.date) <= 7) {
+        if (differenceInDays(today, task.date) <= 7) {
           filteredTasks.push(task);
         }
       });
-    } else if(filterSetting === "filter-starred") {
+    } else if (filterSetting === "filter-starred") {
       tasksTracker.forEach(task => {
-        if(task.starred === true) {
+        if (task.starred === true) {
           filteredTasks.push(task);
         }
       });
@@ -39,11 +39,10 @@ export function filterProjectTasks(event) {
   const targetProjectId = parseInt(event.target.dataset.projectId);
   const filteredTasks = [];
   tasksTracker.forEach(task => {
-    console.log(task.projectId);
-    if(task.projectId === targetProjectId) {
+    if (task.projectId === targetProjectId) {
       filteredTasks.push(task);
     }
   });
-  displayTask(filteredTasks);
+  displayTask(filteredTasks, targetProjectId);
 }
 
