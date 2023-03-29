@@ -72,9 +72,18 @@ function addTaskForm(event) {
   dateInput.setAttribute("id", "form-task-date");
   dateDiv.append(dateLabel, dateInput);
 
-  newTaskForm.append(nameDiv, descDiv, dateDiv);
+  const starredDiv = document.createElement("div");
+  const starredLabel = document.createElement("label");
+  starredLabel.setAttribute("for", "form-task-starred");
+  starredLabel.textContent = "Starred:";
+  const starredInput = document.createElement("input");
+  starredInput.setAttribute("type", "checkbox");
+  starredInput.setAttribute("name", "taskStarred");
+  starredInput.setAttribute("id", "form-task-starred");
+  starredDiv.append(starredLabel, starredInput);
+
+  newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv);
   displayedTasks.appendChild(newTaskForm);
-  //name, desc, date, starred, project id(pulled from btn dataset)
 }
 
 
