@@ -91,6 +91,7 @@ function addTaskForm(event) {
   submitInput.addEventListener("click", checkValidTask);
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "Cancel";
+  cancelButton.addEventListener("click", deleteTaskForm)
   submitDiv.append(submitInput, cancelButton);
 
   newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv, submitDiv);
@@ -99,6 +100,11 @@ function addTaskForm(event) {
 
 export function deleteProjectForm(event) {
   event.target.parentElement.remove();
+}
+
+export function deleteTaskForm(event) {
+  console.log(event);
+  event.preventDefault();
 }
 
 // Add new project to the side bar

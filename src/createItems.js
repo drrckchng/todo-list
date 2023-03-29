@@ -24,6 +24,9 @@ export function checkValidProject(event) {
 
 // TODO: Add checkValidTask to check for valid task settings
 export function checkValidTask(event) {
+  const taskProperties = Array.from(event.target.form).splice(0, 4);
+  // Add conditional to check if name and date exist
+  event.preventDefault();
 }
 
 // TODO: Add a function call to delete all tasks matching projectId
