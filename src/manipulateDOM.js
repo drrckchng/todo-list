@@ -33,12 +33,48 @@ function addProjectForm() {
 
 }
 
-// TODO: Add click listener to add a new task form
 function addNewTaskListener(button) {
-  button.addEventListener("click", createTaskForm);
+  button.addEventListener("click", addTaskForm);
 }
 
-function createTaskForm(event) {
+// TODO: Create form
+function addTaskForm(event) {
+  const displayedTasks = document.getElementById("displayed-tasks");
+  const newTaskForm = document.createElement("form");
+
+  const nameDiv = document.createElement("div");
+  const nameLabel = document.createElement("label");
+  nameLabel.setAttribute("for", "form-task-name");
+  nameLabel.textContent = "Name:";
+  const nameInput = document.createElement("input");
+  nameInput.setAttribute("type", "text");
+  nameInput.setAttribute("name", "taskName");
+  nameInput.setAttribute("id", "form-task-name");
+  nameDiv.append(nameLabel, nameInput);
+
+  const descDiv = document.createElement("div");
+  const descLabel = document.createElement("label");
+  descLabel.setAttribute("for", "form-task-desc");
+  descLabel.textContent = "Description:";
+  const descInput = document.createElement("input");
+  descInput.setAttribute("type", "text");
+  descInput.setAttribute("name", "taskDesc");
+  descInput.setAttribute("id", "form-task-desc");
+  descDiv.append(descLabel, descInput);
+
+  const dateDiv = document.createElement("div");
+  const dateLabel = document.createElement("label");
+  dateLabel.setAttribute("for", "form-task-date");
+  dateLabel.textContent = "Date:";
+  const dateInput = document.createElement("input");
+  dateInput.setAttribute("type", "date");
+  dateInput.setAttribute("name", "taskDate");
+  dateInput.setAttribute("id", "form-task-date");
+  dateDiv.append(dateLabel, dateInput);
+
+  newTaskForm.append(nameDiv, descDiv, dateDiv);
+  displayedTasks.appendChild(newTaskForm);
+  //name, desc, date, starred, project id(pulled from btn dataset)
 }
 
 
