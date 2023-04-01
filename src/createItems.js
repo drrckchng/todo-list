@@ -46,7 +46,6 @@ export function deleteProject(index) {
   projectsTracker.splice(index, 1);
 }
 
-// TODO: Implement way to append task to a projetId
 export function createTask(name, desc, date, starred, targetProjectId) {
   const task = new Task(name, desc, date, starred); // task properties pulled from DOM on creation
   // get currently selected project ID from DOM
