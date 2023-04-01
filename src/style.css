@@ -26,6 +26,7 @@ body {
 
 .side-bar {
   padding: 1em 1em 0 0.5em;
+  width: 20%;
 }
 
 li {
@@ -55,6 +56,23 @@ li {
 .projects-list {
   margin: 0;
   padding: 0;
+}
+
+.project-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-item p {
+  font-weight: normal;
+  font-size: 1.1em;
+  padding: 0;
+  margin: 0;
+}
+
+.project-item span:hover {
+  background-color: #d9d9d9;
 }
 
 .main-content {
