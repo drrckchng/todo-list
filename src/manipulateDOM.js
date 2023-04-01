@@ -117,6 +117,7 @@ export function addProjectDiv(project) {
   projectItem.dataset.projectId = project.projectId; // Set custom dataset attribute
   projectItem.classList.add("project-item");
   projectItem.addEventListener("click", filterProjectTasks);
+  projectItem.click(); // click on project after creation
 }
 
 export function displayTask(tasks, targetProjectId) {
