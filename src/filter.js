@@ -1,6 +1,6 @@
 import { tasksTracker } from './createItems.js';
 import { differenceInDays } from 'date-fns';
-import { displayTask } from './manipulateDOM.js';
+import { changeSectionHeader, displayTask } from './manipulateDOM.js';
 
 // Filter tasks matching date criteria
 export function filterTasks(event) {
@@ -32,6 +32,7 @@ export function filterTasks(event) {
     }
     displayTask(filteredTasks);
   }
+  changeSectionHeader(event.target.textContent);
 }
 
 // Filter tasks matching project id and call displayTask
@@ -43,6 +44,7 @@ export function filterProjectTasks(event) {
       filteredTasks.push(task);
     }
   });
+  changeSectionHeader(event.target.textContent);
   displayTask(filteredTasks, targetProjectId);
 }
 

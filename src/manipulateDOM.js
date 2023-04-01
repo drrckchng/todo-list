@@ -37,6 +37,13 @@ function addNewTaskListener(button) {
   button.addEventListener("click", addTaskForm);
 }
 
+// TODO: Add function to change section header based on selection
+export function changeSectionHeader(header) {
+  const sectionHeader = document.querySelector(".main-content .section");
+  sectionHeader.textContent = ""; // Clear header
+  sectionHeader.textContent = header;
+}
+
 // TODO: Refactor...
 function addTaskForm(event) {
   const targetProjectId = parseInt(event.target.dataset.projectId);
