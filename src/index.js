@@ -1,6 +1,7 @@
 import './style.css';
 import "@fontsource/lato";
 import "@fontsource/lato/900.css";
+import 'material-icons/iconfont/material-icons.css';
 // import { format } from 'date-fns';
 // import {Task} from './taskClass.js';
 // import {Project} from './projectClass.js';

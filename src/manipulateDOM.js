@@ -118,10 +118,15 @@ export function deleteTaskForm(event) {
 export function addProjectDiv(project) {
   const projectsList = document.getElementById("projects-list");
   const projectItem = document.createElement("div");
-  projectsList.appendChild(projectItem);
-  projectItem.textContent = project.name;
+  const projectName = document.createElement("p");
+  const projectOpts = document.createElement("span");
+  projectOpts.classList.add("material-icons");
+  projectName.textContent = project.name;
+  projectOpts.textContent = "more_vert";
   projectItem.dataset.projectId = project.projectId; // Set custom dataset attribute
   projectItem.classList.add("project-item");
+  projectItem.append(projectName, projectOpts);
+  projectsList.appendChild(projectItem);
   projectItem.addEventListener("click", filterProjectTasks);
   projectItem.click(); // click on project after creation
 }
