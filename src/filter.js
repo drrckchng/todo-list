@@ -44,7 +44,7 @@ export function filterProjectTasks(event) {
       filteredTasks.push(task);
     }
   });
-  changeSectionHeader(event.target.textContent);
+  changeSectionHeader(event.target.firstChild.textContent);
   displayTask(filteredTasks, targetProjectId);
 }
 
