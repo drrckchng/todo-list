@@ -114,7 +114,7 @@ export function deleteTaskForm(event) {
   event.preventDefault();
 }
 
-// Add new project to the side bar
+// TODO: Figure out bubbling problem
 export function addProjectDiv(project) {
   const projectsList = document.getElementById("projects-list");
   const projectItem = document.createElement("div");
@@ -123,12 +123,19 @@ export function addProjectDiv(project) {
   projectOpts.classList.add("material-icons");
   projectName.textContent = project.name;
   projectOpts.textContent = "more_vert";
+  projectOpts.addEventListener("click", makeProjectOpts);
   projectItem.dataset.projectId = project.projectId; // Set custom dataset attribute
   projectItem.classList.add("project-item");
   projectItem.append(projectName, projectOpts);
   projectsList.appendChild(projectItem);
   projectItem.addEventListener("click", filterProjectTasks);
   projectItem.click(); // click on project after creation
+}
+
+
+function makeProjectOpts(event) {
+  console.log("clicked on opts");
+  event.stopPropagation();
 }
 
 export function displayTask(tasks, targetProjectId) {
