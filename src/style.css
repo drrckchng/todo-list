@@ -65,6 +65,7 @@ li {
 }
 
 .project-item p {
+  pointer-events: none;
   font-weight: normal;
   font-size: 1.1em;
   padding: 0;
