@@ -132,7 +132,8 @@ export function addProjectDiv(project) {
 }
 
 function makeProjectOpts(event) {
-  console.log("clicked on opts");
+  const targetProjectId = event.target.parentElement.dataset.projectId;
+  console.log(targetProjectId);
   event.stopPropagation();
 }
 
