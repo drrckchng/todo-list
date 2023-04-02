@@ -132,8 +132,20 @@ export function addProjectDiv(project) {
 }
 
 function makeProjectOpts(event) {
-  const targetProjectId = event.target.parentElement.dataset.projectId;
-  console.log(targetProjectId);
+  const parentDiv = event.target.parentElement;
+  const targetProjectId = parentDiv.dataset.projectId;
+  const optsDiv = document.createElement("div");
+  parentDiv.append(optsDiv);
+
+  const renameOpt = document.createElement("a");
+  renameOpt.setAttribute("href", "#rename");
+  optsDiv.append(renameOpt);
+  const renameOptIcon = document.createElement("span");
+  renameOptIcon.classList.add("material-icons");
+  renameOptIcon.textContent = "drive_file_rename_outline";
+  renameOpt.append(renameOptIcon);
+
+
   event.stopPropagation();
 }
 
@@ -155,7 +167,6 @@ export function displayTask(tasks, targetProjectId) {
     addTaskButton.dataset.projectId = targetProjectId;
     buttonDiv.appendChild(addTaskButton);
     addNewTaskListener(addTaskButton);
-
   }
 }
 
