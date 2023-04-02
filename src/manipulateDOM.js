@@ -114,7 +114,6 @@ export function deleteTaskForm(event) {
   event.preventDefault();
 }
 
-// TODO: Figure out bubbling problem
 export function addProjectDiv(project) {
   const projectsList = document.getElementById("projects-list");
   const projectItem = document.createElement("div");
@@ -131,7 +130,6 @@ export function addProjectDiv(project) {
   projectItem.addEventListener("click", filterProjectTasks);
   projectItem.click(); // click on project after creation
 }
-
 
 function makeProjectOpts(event) {
   console.log("clicked on opts");
