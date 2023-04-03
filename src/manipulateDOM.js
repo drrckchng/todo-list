@@ -142,14 +142,14 @@ function makeProjectOpts(event) {
   const renameOpt = document.createElement("a");
   renameOpt.setAttribute("href", "#rename");
   const renameOptIcon = document.createElement("span");
-  renameOptIcon.classList.add("material-icons");
+  renameOptIcon.classList.add("material-icons-round");
   renameOptIcon.textContent = "drive_file_rename_outline";
   renameOpt.append(renameOptIcon);
 
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
   const deleteOptIcon = document.createElement("span");
-  deleteOptIcon.classList.add("material-icons");
+  deleteOptIcon.classList.add("material-icons-round");
   deleteOptIcon.textContent = "delete";
   deleteOpt.append(deleteOptIcon);
 
