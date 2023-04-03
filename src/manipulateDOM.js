@@ -144,14 +144,18 @@ function makeProjectOpts(event) {
   const renameOptIcon = document.createElement("span");
   renameOptIcon.classList.add("material-icons-round");
   renameOptIcon.textContent = "drive_file_rename_outline";
-  renameOpt.append(renameOptIcon);
+  const renameOptLabel = document.createElement("p");
+  renameOptLabel.textContent = "Rename";
+  renameOpt.append(renameOptIcon, renameOptLabel);
 
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
   const deleteOptIcon = document.createElement("span");
   deleteOptIcon.classList.add("material-icons-round");
   deleteOptIcon.textContent = "delete";
-  deleteOpt.append(deleteOptIcon);
+  const deleteOptLabel = document.createElement("p");
+  deleteOptLabel.textContent = "Delete";
+  deleteOpt.append(deleteOptIcon, deleteOptLabel);
 
   optsDiv.append(renameOpt, deleteOpt);
 
