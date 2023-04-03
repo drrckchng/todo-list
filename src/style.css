@@ -93,6 +93,7 @@ li {
   color: var(--white-text);
 }
 
+/* TODO: Adjust position of menu*/
 .dropdown {
   position: absolute;
   left: 500px;

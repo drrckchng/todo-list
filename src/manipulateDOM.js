@@ -122,22 +122,22 @@ export function addProjectDiv(project) {
   projectOpts.classList.add("material-icons");
   projectName.textContent = project.name;
   projectOpts.textContent = "more_vert";
-  projectOpts.addEventListener("click", makeProjectOpts);
+  projectOpts.addEventListener("click", toggleVis);
   projectItem.dataset.projectId = project.projectId; // Set custom dataset attribute
   projectItem.classList.add("project-item");
   projectItem.append(projectName, projectOpts);
   projectsList.appendChild(projectItem);
   projectItem.addEventListener("click", filterProjectTasks);
+  makeProjectOpts(projectItem);
   projectItem.click(); // click on project after creation
 }
 
-// TODO: Create invisible menu upon creation of project
-function makeProjectOpts(event) {
-  const parentDiv = event.target.parentElement;
-  const targetProjectId = parentDiv.dataset.projectId;
+// TODO: Make menu close on item click or outside click
+function makeProjectOpts(item) {
+  const targetProjectId = item.dataset.projectId;
   const optsDiv = document.createElement("div");
   optsDiv.classList.add("dropdown");
-  parentDiv.append(optsDiv);
+  item.append(optsDiv);
 
   const renameOpt = document.createElement("a");
   renameOpt.setAttribute("href", "#rename");
@@ -158,15 +158,11 @@ function makeProjectOpts(event) {
   deleteOpt.append(deleteOptIcon, deleteOptLabel);
 
   optsDiv.append(renameOpt, deleteOpt);
-
-  toggleVis(optsDiv);
-
-  event.stopPropagation();
 }
 
-function toggleVis(menu) {
-  menu.classList.toggle("show");
-  console.log("toggled visibility");
+function toggleVis(event) {
+  event.target.nextSibling.classList.toggle("show");
+  event.stopPropagation();
 }
 
 export function displayTask(tasks, targetProjectId) {
