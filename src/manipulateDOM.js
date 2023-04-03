@@ -131,20 +131,29 @@ export function addProjectDiv(project) {
   projectItem.click(); // click on project after creation
 }
 
+// TODO: Create options menu for project
 function makeProjectOpts(event) {
   const parentDiv = event.target.parentElement;
   const targetProjectId = parentDiv.dataset.projectId;
   const optsDiv = document.createElement("div");
+  optsDiv.classList.add("dropdown");
   parentDiv.append(optsDiv);
 
   const renameOpt = document.createElement("a");
   renameOpt.setAttribute("href", "#rename");
-  optsDiv.append(renameOpt);
   const renameOptIcon = document.createElement("span");
   renameOptIcon.classList.add("material-icons");
   renameOptIcon.textContent = "drive_file_rename_outline";
   renameOpt.append(renameOptIcon);
 
+  const deleteOpt = document.createElement("a");
+  deleteOpt.setAttribute("href", "#delete");
+  const deleteOptIcon = document.createElement("span");
+  deleteOptIcon.classList.add("material-icons");
+  deleteOptIcon.textContent = "delete";
+  deleteOpt.append(deleteOptIcon);
+
+  optsDiv.append(renameOpt, deleteOpt);
 
   event.stopPropagation();
 }
