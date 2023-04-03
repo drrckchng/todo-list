@@ -4,7 +4,8 @@
   box-sizing: border-box;
   --shadow: rgba(0, 0, 0, 0.05) 0px 6px 10px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
-  --color: #166e67;
+  --green-accent: #2abd67;
+  --white-text: #f7f5f5;
   --gap: 0.5rem;
   --radius: 5px;
 }
@@ -83,10 +84,6 @@ li {
   margin: 0;
 }
 
-.project-item span:hover {
-  background-color: #d9d9d9;
-}
-
 .dropdown {
   position: absolute;
   width: 100px;
@@ -106,7 +103,8 @@ li {
 }
 
 .dropdown a:hover {
-  background-color: var(--color);
+  background-color: var(--green-accent);
+  border-radius: var(--radius);
   color: white;
 }
 
@@ -122,5 +120,6 @@ li {
   padding: 1em;
   margin: 1em;
   text-align: center;
-  background-color: green;
+  background-color: var(--green-accent);
+  color: var(--white-text);
 }
