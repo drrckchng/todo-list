@@ -84,9 +84,19 @@ li {
   margin: 0;
 }
 
+.project-item span {
+  position: relative;
+}
+
+.project-item span:hover {
+  background-color: var(--green-accent);
+  color: var(--white-text);
+}
+
 .dropdown {
   position: absolute;
-  width: 100px;
+  font-size: 0.8em;
+  width: 130px;
   box-shadow: var(--shadow);
   border-radius: var(--radius);
   margin-top: 0.3rem;
