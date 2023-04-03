@@ -131,7 +131,7 @@ export function addProjectDiv(project) {
   projectItem.click(); // click on project after creation
 }
 
-// TODO: Create options menu for project
+// TODO: Create invisible menu upon creation of project
 function makeProjectOpts(event) {
   const parentDiv = event.target.parentElement;
   const targetProjectId = parentDiv.dataset.projectId;
@@ -159,7 +159,14 @@ function makeProjectOpts(event) {
 
   optsDiv.append(renameOpt, deleteOpt);
 
+  toggleVis(optsDiv);
+
   event.stopPropagation();
+}
+
+function toggleVis(menu) {
+  menu.classList.toggle("show");
+  console.log("toggled visibility");
 }
 
 export function displayTask(tasks, targetProjectId) {
