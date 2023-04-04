@@ -8,6 +8,7 @@ export function addListeners() {
   });
   document.getElementById("add-project").addEventListener("click", addProjectForm);
   document.querySelector(".overlay").addEventListener("click", toggleModal);
+  document.querySelector(".modal-cancel-button").addEventListener("click", toggleModal);
 }
 
 function addProjectForm() {
@@ -201,7 +202,7 @@ export function createRenameForm() {
   addButton.textContent = "Add";
 
   const cancelButton = document.createElement("button");
-  cancelButton.classList.add("btn");
+  cancelButton.classList.add("btn", "modal-cancel-button");
   cancelButton.textContent = "Cancel";
 
   buttonDiv.append(addButton, cancelButton);
