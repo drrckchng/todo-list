@@ -1,5 +1,5 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
-import { checkValidProject, checkValidTask } from './createItems.js';
+import { checkValidProject, checkValidTask, renameProject } from './createItems.js';
 
 export function addListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
@@ -132,7 +132,7 @@ export function addProjectDiv(project) {
   projectItem.click(); // click on project after creation
 }
 
-// TODO: Make menu close on item click or outside click
+// TODO: Add listeners to options button
 function makeProjectOpts(item) {
   const targetProjectId = item.dataset.projectId;
   const optsDiv = document.createElement("div");
@@ -147,6 +147,7 @@ function makeProjectOpts(item) {
   const renameOptLabel = document.createElement("p");
   renameOptLabel.textContent = "Rename";
   renameOpt.append(renameOptIcon, renameOptLabel);
+  renameOpt.addEventListener("click", createRenameForm);
 
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
@@ -165,6 +166,18 @@ function makeProjectOpts(item) {
       toggleVis(optsDiv);
     }
   })
+}
+
+// TODO: Add a modal window for rename form
+function createRenameForm(event) {
+  const projectItemDiv = event.target.parentElement.parentElement;
+
+  // Create input for new project name
+  const renameInput = document.createElement("input");
+  renameInput.setAttribute("type", "text");
+  renameInput.setAttribute("placeholder", "Rename project...");
+
+  event.stopPropagation();
 }
 
 function toggleVis(event) {

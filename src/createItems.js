@@ -41,6 +41,11 @@ export function checkValidTask(event) {
   event.preventDefault();
 }
 
+// TODO: Add function to rename project using class method
+export function renameProject(newName) {
+  console.log("rename project");
+}
+
 // TODO: Add a function call to delete all tasks matching projectId
 export function deleteProject(index) {
   projectsTracker.splice(index, 1);

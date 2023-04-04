@@ -6,4 +6,7 @@ export class Project {
     this.projectId = projectId;
     projectId += 1;
   }
+  rename = function(newName) {
+    this.name = newName;
+  }
 }
