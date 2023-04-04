@@ -244,6 +244,7 @@ export function displayTask(tasks, targetProjectId) {
     });
     taskArea.appendChild(taskDiv);
   }));
+  // TODO: Change task button to div with icon and text
   if (targetProjectId !== undefined) {
     const buttonDiv = document.getElementById("add-task");
     const addTaskButton = document.createElement("button");
