@@ -6,8 +6,8 @@ export function addListeners() {
   filterTaskButtons.forEach(function(button) {
     button.addEventListener("click", filterTasks);
   });
-
   document.getElementById("add-project").addEventListener("click", addProjectForm);
+  document.querySelector(".overlay").addEventListener("click", toggleModal);
 }
 
 function addProjectForm() {
@@ -147,7 +147,7 @@ function makeProjectOpts(item) {
   const renameOptLabel = document.createElement("p");
   renameOptLabel.textContent = "Rename";
   renameOpt.append(renameOptIcon, renameOptLabel);
-  renameOpt.addEventListener("click", createRenameForm);
+  renameOpt.addEventListener("click", toggleModal);
 
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
@@ -168,16 +168,51 @@ function makeProjectOpts(item) {
   })
 }
 
+function toggleModal(event) {
+  const modal = document.querySelector(".modal");
+  const overlay = document.querySelector(".overlay");
+  modal.classList.toggle("hidden");
+  overlay.classList.toggle("hidden");
+  if (event) {
+    toggleVis(event.target.parentElement);
+    event.stopPropagation();
+  }
+}
+
 // TODO: Add a modal window for rename form
-function createRenameForm(event) {
-  const projectItemDiv = event.target.parentElement.parentElement;
+export function createRenameForm() {
 
-  // Create input for new project name
-  const renameInput = document.createElement("input");
-  renameInput.setAttribute("type", "text");
-  renameInput.setAttribute("placeholder", "Rename project...");
+  const section = document.createElement("section");
+  section.classList.add("modal", "hidden");
 
-  event.stopPropagation();
+  const action = document.createElement("p");
+  action.textContent = "Rename Project";
+
+  const input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("id", "rename-input");
+  input.setAttribute("placeholder", "New project name...");
+
+  const buttonDiv = document.createElement("div");
+  buttonDiv.classList.add("modal-buttons");
+
+  const addButton = document.createElement("button");
+  addButton.classList.add("btn");
+  addButton.textContent = "Add";
+
+  const cancelButton = document.createElement("button");
+  cancelButton.classList.add("btn");
+  cancelButton.textContent = "Cancel";
+
+  buttonDiv.append(addButton, cancelButton);
+
+  section.append(action, input, buttonDiv);
+
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay", "hidden");
+
+  document.body.append(section, overlay);
+
 }
 
 function toggleVis(event) {
