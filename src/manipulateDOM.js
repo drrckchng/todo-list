@@ -158,11 +158,22 @@ function makeProjectOpts(item) {
   deleteOpt.append(deleteOptIcon, deleteOptLabel);
 
   optsDiv.append(renameOpt, deleteOpt);
+
+  // Add listener to html DOM to toggle visibility of drop down menu
+  document.documentElement.addEventListener("click", function() {
+    if (optsDiv.classList.contains("show")) {
+      toggleVis(optsDiv);
+    }
+  })
 }
 
 function toggleVis(event) {
-  event.target.nextSibling.classList.toggle("show");
-  event.stopPropagation();
+  if (event.target !== undefined) { // clicked from more_vert click
+    event.target.nextSibling.classList.toggle("show");
+    event.stopPropagation();
+  } else { // clicked outside of element
+    event.classList.toggle("show");
+  }
 }
 
 export function displayTask(tasks, targetProjectId) {
