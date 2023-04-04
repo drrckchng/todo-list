@@ -148,7 +148,7 @@ function makeProjectOpts(item) {
   const renameOptLabel = document.createElement("p");
   renameOptLabel.textContent = "Rename";
   renameOpt.append(renameOptIcon, renameOptLabel);
-  renameOpt.addEventListener("click", toggleModal);
+  renameOpt.addEventListener("click", passRenameProject);
 
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
@@ -169,15 +169,23 @@ function makeProjectOpts(item) {
   })
 }
 
-function toggleModal(event) {
+function toggleModal() {
   const modal = document.querySelector(".modal");
   const overlay = document.querySelector(".overlay");
   modal.classList.toggle("hidden");
   overlay.classList.toggle("hidden");
-  if (event) {
-    toggleVis(event.target.parentElement);
-    event.stopPropagation();
-  }
+}
+
+function passRenameProject(event) {
+  toggleVis(event.target.parentElement);
+  toggleModal();
+
+  const projectId = parseInt(event.target.parentElement.parentElement.dataset.projectId);
+  const addButton = document.querySelector(".modal-add-button");
+  addButton.dataset.projectId = projectId;
+  addButton.addEventListener("click", renameProject);
+
+  event.stopPropagation();
 }
 
 // TODO: Add a modal window for rename form
@@ -198,7 +206,7 @@ export function createRenameForm() {
   buttonDiv.classList.add("modal-buttons");
 
   const addButton = document.createElement("button");
-  addButton.classList.add("btn");
+  addButton.classList.add("btn", "modal-add-button");
   addButton.textContent = "Add";
 
   const cancelButton = document.createElement("button");

@@ -42,8 +42,9 @@ export function checkValidTask(event) {
 }
 
 // TODO: Add function to rename project using class method
-export function renameProject(newName) {
-  console.log("rename project");
+export function renameProject(event) {
+  const newName = event.target.parentElement.parentElement.children[1].value;
+  const projectId = parseInt(event.target.dataset.projectId);
 }
 
 // TODO: Add a function call to delete all tasks matching projectId
