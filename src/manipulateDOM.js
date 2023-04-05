@@ -133,7 +133,7 @@ export function addProjectDiv(project) {
   projectItem.click(); // click on project after creation
 }
 
-// TODO: Add listeners to options button
+// TODO: Stop propagation on clicking icons
 function makeProjectOpts(item) {
   const targetProjectId = item.dataset.projectId;
   const optsDiv = document.createElement("div");
