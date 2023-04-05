@@ -188,7 +188,12 @@ function passRenameProject(event) {
   event.stopPropagation();
 }
 
-// TODO: Add a modal window for rename form
+export function renameProjectDiv(projectId, newName) {
+  const project = document.querySelector(`[data-project-id="${projectId}"]`);
+  project.children[0].textContent = newName;
+  toggleModal();
+}
+
 export function createRenameForm() {
 
   const section = document.createElement("section");

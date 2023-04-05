@@ -1,6 +1,6 @@
 import { Task } from './taskClass.js';
 import { Project } from './projectClass.js';
-import { addProjectDiv, deleteProjectForm, deleteTaskForm } from './manipulateDOM.js';
+import { addProjectDiv, deleteProjectForm, deleteTaskForm, renameProjectDiv } from './manipulateDOM.js';
 import { parseISO } from 'date-fns';
 import { filterProjectTasks } from './filter.js';
 
@@ -45,6 +45,8 @@ export function checkValidTask(event) {
 export function renameProject(event) {
   const newName = event.target.parentElement.parentElement.children[1].value;
   const projectId = parseInt(event.target.dataset.projectId);
+  projectsTracker[projectId].rename(newName);
+  renameProjectDiv(projectId, newName);
 }
 
 // TODO: Add a function call to delete all tasks matching projectId
