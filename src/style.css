@@ -60,6 +60,15 @@ li {
   background-color: #ececec;
 }
 
+#add-project {
+  display: flex;
+  align-items: center;
+}
+
+#add-project span {
+  margin-right: 0.2em;
+}
+
 .projects p {
   font-weight: bold;
   font-size: 1.3em;
