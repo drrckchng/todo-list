@@ -35,6 +35,7 @@ export function checkValidTask(event) {
     createTask(taskName, taskDesc, taskDateConvert, taskStarred, parseInt(event.target.dataset.projectId));
     deleteTaskForm(event);
     filterProjectTasks(event)
+    // document.querySelector(`[data-project-id='${event.target.dataset.projectId}']`).click();
   } else {
     alert("Project name and date are required");
   }

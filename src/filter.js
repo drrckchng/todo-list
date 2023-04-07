@@ -1,4 +1,4 @@
-import { tasksTracker } from './createItems.js';
+import { tasksTracker, projectsTracker } from './createItems.js';
 import { differenceInDays } from 'date-fns';
 import { changeSectionHeader, displayTask } from './manipulateDOM.js';
 
@@ -38,13 +38,22 @@ export function filterTasks(event) {
 // Filter tasks matching project id and call displayTask
 export function filterProjectTasks(event) {
   const targetProjectId = parseInt(event.target.dataset.projectId);
+  const targetProject = findProject(targetProjectId);
   const filteredTasks = [];
   tasksTracker.forEach(task => {
     if (task.projectId === targetProjectId) {
       filteredTasks.push(task);
     }
   });
-  changeSectionHeader(event.target.firstChild.textContent);
+  changeSectionHeader(targetProject.name);
   displayTask(filteredTasks, targetProjectId);
 }
 
+// Grab matching project and return
+function findProject(targetId) {
+  for (let i = 0; i < projectsTracker.length; i++) {
+    if (projectsTracker[i].projectId === targetId) {
+      return projectsTracker[i];
+    }
+  }
+}
