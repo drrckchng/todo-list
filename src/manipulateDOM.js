@@ -249,7 +249,7 @@ function toggleVis(event) {
   }
 }
 
-// TODO: Create divs for flex layout
+// TODO: Create option to mark task as done
 // TODO: Create options for task items (delete and edit)
 // TODO: Add event listener to toggle starred status
 export function displayTask(tasks, targetProjectId) {
@@ -260,13 +260,15 @@ export function displayTask(tasks, targetProjectId) {
     // Convert date to human readable
     const formattedDate = format(task.date, "MMMM do yyyy");
     const properties = [task.name, task.desc, formattedDate];
-    properties.forEach(prop => {
-      createTaskItem(taskDiv, prop);
-    });
+    const taskDetails = document.createElement("div");
+    taskDetails.classList.add("task-details");
+    createTaskItem(taskDetails, task.name);
+    createTaskItem(taskDetails, task.desc);
+    taskDiv.append(taskDetails);
+    createTaskItem(taskDiv, formattedDate);
     createTaskStar(taskDiv, task.starred) // Add icon for starred
     taskArea.appendChild(taskDiv);
   }));
-  // TODO: Change task button to div with icon and text
   if (targetProjectId !== undefined) {
     const buttonDiv = document.getElementById("add-task");
     const addTaskButton = document.createElement("button");
