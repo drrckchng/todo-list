@@ -238,17 +238,26 @@ button {
 }
 
 #displayed-tasks > div {
+  display: flex;
   background-color: white;
   margin: 0.2em 0;
   padding: 1em;
 }
 
-#displayed-tasks div p:nth-child(1) {
+.task-details {
+  flex: 1;
+}
+
+.task-details p:nth-child(1) {
   font-weight: bold;
   font-size: 1.3em;
 }
 
-#displayed-tasks div p:nth-child(2) {
+.task-details p:nth-child(2) {
   font-style: italic;
   font-size: 0.9em;
+}
+
+#displayed-tasks > div span {
+  margin-left: 0.5em;
 }
