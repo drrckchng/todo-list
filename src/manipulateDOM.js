@@ -1,5 +1,6 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
 import { checkValidProject, checkValidTask, renameProject } from './createItems.js';
+import { format } from 'date-fns';
 
 export function addListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
@@ -250,7 +251,9 @@ export function displayTask(tasks, targetProjectId) {
   const taskArea = document.getElementById("displayed-tasks");
   tasks.forEach((task => {
     const taskDiv = document.createElement("div");
-    const properties = [task.name, task.desc, task.date, task.starred];
+    // Convert date to human readable
+    const formattedDate = format(task.date, "MMMM do u");
+    const properties = [task.name, task.desc, formattedDate, task.starred];
     properties.forEach(prop => {
       createTaskItem(taskDiv, prop);
     });
