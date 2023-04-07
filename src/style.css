@@ -240,4 +240,15 @@ button {
 #displayed-tasks > div {
   background-color: white;
   margin: 0.2em 0;
+  padding: 1em;
+}
+
+#displayed-tasks div p:nth-child(1) {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+#displayed-tasks div p:nth-child(2) {
+  font-style: italic;
+  font-size: 0.9em;
 }
