@@ -12,6 +12,9 @@ export function addListeners() {
   document.querySelector(".modal-cancel-button").addEventListener("click", toggleModal);
 }
 
+// TODO: Change "starred" bool to an icon
+// TODO: Add listener to stars to toggle "starred" state
+
 function addProjectForm() {
   const projectsList = document.getElementById("projects-list");
   const projectForm = document.createElement("form");
