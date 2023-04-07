@@ -170,18 +170,27 @@ li {
   margin: 0.4rem 0 0.2rem;
 }
 
-.modal-buttons button {
+button {
   cursor: pointer;
   border: none;
   font-weight: 600;
+  border-radius: 5px;
+  text-align: center;
   margin: 0.1rem;
   display: inline-block;
+}
+
+#add-task button {
+  background: var(--green-accent);
+  color: var(--white-text);
+  padding: 0.5em;
+}
+
+.modal-buttons button {
   padding: 0.8rem 1.4rem;
   font-weight: 700;
   background-color: var(--green-accent);
   color: white;
-  border-radius: 5px;
-  text-align: center;
   font-size: 1em;
 }
 
@@ -211,13 +220,24 @@ li {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  padding: 1em;
 }
 
 .main-content .section {
   font-size: 1.2em;
   padding: 1em;
-  margin: 1em;
   text-align: center;
   background-color: var(--green-accent);
   color: var(--white-text);
+  margin-bottom: 0.2em;
+}
+
+#displayed-tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+#displayed-tasks > div {
+  background-color: white;
+  margin: 0.2em 0;
 }
