@@ -249,17 +249,21 @@ function toggleVis(event) {
   }
 }
 
+// TODO: Create divs for flex layout
+// TODO: Create options for task items (delete and edit)
+// TODO: Add event listener to toggle starred status
 export function displayTask(tasks, targetProjectId) {
   clearTasks();
   const taskArea = document.getElementById("displayed-tasks");
   tasks.forEach((task => {
     const taskDiv = document.createElement("div");
     // Convert date to human readable
-    const formattedDate = format(task.date, "MMMM do u");
-    const properties = [task.name, task.desc, formattedDate, task.starred];
+    const formattedDate = format(task.date, "MMMM do yyyy");
+    const properties = [task.name, task.desc, formattedDate];
     properties.forEach(prop => {
       createTaskItem(taskDiv, prop);
     });
+    createTaskStar(taskDiv, task.starred) // Add icon for starred
     taskArea.appendChild(taskDiv);
   }));
   // TODO: Change task button to div with icon and text
@@ -271,6 +275,17 @@ export function displayTask(tasks, targetProjectId) {
     buttonDiv.appendChild(addTaskButton);
     addNewTaskListener(addTaskButton);
   }
+}
+
+function createTaskStar(parent, property) {
+  const star = document.createElement("span");
+  star.classList.add("material-icons");
+  if (property) {
+    star.textContent = "star";
+  } else {
+    star.textContent = "star_border";
+  }
+  parent.appendChild(star);
 }
 
 function createTaskItem(parent, property) {
