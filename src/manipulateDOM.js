@@ -133,7 +133,6 @@ export function addProjectDiv(project) {
   projectItem.click(); // click on project after creation
 }
 
-// TODO: Stop propagation on clicking icons
 function makeProjectOpts(item) {
   const targetProjectId = item.dataset.projectId;
   const optsDiv = document.createElement("div");
@@ -143,7 +142,7 @@ function makeProjectOpts(item) {
   const renameOpt = document.createElement("a");
   renameOpt.setAttribute("href", "#rename");
   const renameOptIcon = document.createElement("span");
-  renameOptIcon.classList.add("material-icons-round");
+  renameOptIcon.classList.add("opt-icon", "material-icons-round");
   renameOptIcon.textContent = "drive_file_rename_outline";
   const renameOptLabel = document.createElement("p");
   renameOptLabel.textContent = "Rename";
@@ -153,7 +152,7 @@ function makeProjectOpts(item) {
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
   const deleteOptIcon = document.createElement("span");
-  deleteOptIcon.classList.add("material-icons-round");
+  deleteOptIcon.classList.add("opt-icon", "material-icons-round");
   deleteOptIcon.textContent = "delete";
   const deleteOptLabel = document.createElement("p");
   deleteOptLabel.textContent = "Delete";
@@ -161,12 +160,20 @@ function makeProjectOpts(item) {
 
   optsDiv.append(renameOpt, deleteOpt);
 
-  // Add listener to html DOM to toggle visibility of drop down menu
+  // Click listener to html DOM to toggle visibility of drop down menu
   document.documentElement.addEventListener("click", function() {
     if (optsDiv.classList.contains("show")) {
       toggleVis(optsDiv);
     }
   })
+
+  // TODO: Stop propagation on icons
+  // Click listener to stop propgation on icons
+  document.querySelectorAll(".opt-icon").forEach(icon => {
+    icon.addEventListener("click", function() {
+      event.stopPropagation();
+    })
+  });
 }
 
 function toggleModal() {
