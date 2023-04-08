@@ -250,7 +250,8 @@ function toggleVis(event) {
 }
 
 // TODO: Create option to mark task as done
-// TODO: Create options for task items (delete and edit)
+// TODO: Create options for task delete
+// TODO: Allow edit of task item on click
 // TODO: Add event listener to toggle starred status
 export function displayTask(tasks, targetProjectId) {
   clearTasks();
