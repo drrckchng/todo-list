@@ -12,7 +12,6 @@ export function addListeners() {
   document.querySelector(".modal-cancel-button").addEventListener("click", toggleModal);
 }
 
-// TODO: Change "starred" bool to an icon
 // TODO: Add listener to stars to toggle "starred" state
 
 function addProjectForm() {
@@ -48,7 +47,6 @@ export function changeSectionHeader(header) {
   sectionHeader.textContent = header;
 }
 
-// TODO: Refactor...
 function addTaskForm(event) {
   const targetProjectId = parseInt(event.target.dataset.projectId);
   const displayedTasks = document.getElementById("displayed-tasks");
