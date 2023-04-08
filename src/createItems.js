@@ -29,7 +29,7 @@ export function checkValidTask(event) {
   const taskName = taskProperties[0].value;
   const taskDesc = taskProperties[1].value;
   const taskDate = taskProperties[2].value;
-  const taskStarred = taskProperties[2].checked;
+  const taskStarred = taskProperties[3].checked;
   if ((taskName !== "") && (taskDate !== "")) {
     const taskDateConvert = parseISO(taskDate); // convert date string to date object
     createTask(taskName, taskDesc, taskDateConvert, taskStarred, parseInt(event.target.dataset.projectId));
