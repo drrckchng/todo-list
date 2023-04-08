@@ -258,6 +258,14 @@ button {
   font-size: 0.9em;
 }
 
+#displayed-tasks > div p {
+  display: flex;
+  align-items: center;
+}
+
 #displayed-tasks > div span {
+  display: flex;
+  align-items: center;
   margin-left: 0.5em;
 }
+
