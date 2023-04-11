@@ -42,7 +42,6 @@ export function checkValidTask(event) {
   event.preventDefault();
 }
 
-// TODO: Add function to rename project using class method
 export function renameProject(event) {
   const newName = event.target.parentElement.parentElement.children[1].value;
   const projectId = parseInt(event.target.dataset.projectId);
