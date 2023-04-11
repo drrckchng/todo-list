@@ -316,22 +316,39 @@ function editInPlace(event) {
   const targetTaskId = parseInt(event.target.parentElement.parentElement.dataset.taskId);
   const old = event.target.textContent; // save old
   event.target.textContent = ""; // clear old
-  const input = document.createElement("input");
-  input.dataset.taskId = targetTaskId;
-  input.setAttribute("type", "text");
-  input.setAttribute("placeholder", old);
-  const confirm = document.createElement("span");
-  confirm.classList.add("material-icons");
-  confirm.textContent = "check_circle";
-  confirm.addEventListener("click", changeTaskDetail);
-  const cancel = document.createElement("span");
-  cancel.classList.add("material-icons");
-  cancel.textContent = "cancel";
-  cancel.addEventListener("click", cancelTaskDetail)
-  event.target.append(input, confirm, cancel);
+  // If target is task name or desc...
+  if (event.target.parentElement.className === "task-details") {
+    const input = document.createElement("input");
+    input.dataset.taskId = targetTaskId;
+    input.setAttribute("type", "text");
+    input.setAttribute("placeholder", old);
+    const confirm = document.createElement("span");
+    confirm.classList.add("material-icons");
+    confirm.textContent = "check_circle";
+    confirm.addEventListener("click", changeTaskDetail);
+    const cancel = document.createElement("span");
+    cancel.classList.add("material-icons");
+    cancel.textContent = "cancel";
+    cancel.addEventListener("click", cancelTaskDetail)
+    event.target.append(input, confirm, cancel);
+  } else { // is date
+    // add date input...
+  }
 }
 
 function changeTaskDetail(event) {
+  const newValue = event.target.previousSibling.value;
+  // if input value is NOT empty
+  if (newValue !== "") {
+    event.target.parentElement.textContent = newValue;
+    if (event.target.parentElement.className === "task-item-name") {
+      // change task name
+    } else {
+      // change task desc
+    }
+  } else {
+    alert("Enter a new value");
+  }
   event.stopPropagation();
 }
 
