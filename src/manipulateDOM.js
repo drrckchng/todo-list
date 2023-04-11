@@ -1,5 +1,5 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
-import { checkValidProject, checkValidTask, renameProject } from './createItems.js';
+import { checkValidProject, checkValidTask, renameProject, tasksTracker } from './createItems.js';
 import { format } from 'date-fns';
 
 export function addListeners() {
@@ -13,7 +13,6 @@ export function addListeners() {
 }
 
 // TODO: Add listener to stars to toggle "starred" state
-
 function addProjectForm() {
   const projectsList = document.getElementById("projects-list");
   const projectForm = document.createElement("form");
@@ -32,9 +31,7 @@ function addProjectForm() {
   deleteButton.addEventListener("click", deleteProjectForm);
 
   projectForm.append(input, confirmButton, deleteButton);
-
   projectsList.appendChild(projectForm);
-
 }
 
 function addNewTaskListener(button) {
@@ -265,7 +262,7 @@ export function displayTask(tasks, targetProjectId) {
     createTaskItem(taskDetails, task.desc);
     taskDiv.append(taskDetails);
     createTaskItem(taskDiv, formattedDate);
-    createTaskStar(taskDiv, task.starred) // Add icon for starred
+    createTaskStar(taskDiv, task.starred, task) // Add icon for starred
     taskArea.appendChild(taskDiv);
   }));
   if (targetProjectId !== undefined) {
@@ -278,15 +275,32 @@ export function displayTask(tasks, targetProjectId) {
   }
 }
 
-function createTaskStar(parent, property) {
+function createTaskStar(parent, property, task) {
   const star = document.createElement("span");
   star.classList.add("material-icons");
+  star.dataset.taskId = task.taskId;
   if (property) {
     star.textContent = "star";
   } else {
     star.textContent = "star_border";
   }
+  star.addEventListener("click", toggleStarDiv);
   parent.appendChild(star);
+}
+
+function toggleStarDiv(event) {
+  const targetTaskId = parseInt(event.target.dataset.taskId);
+  tasksTracker.forEach(task => {
+    if (task.taskId === targetTaskId) {
+      if (task.starred === true) {
+        task.starred = false;
+        event.target.textContent = "star_border";
+      } else {
+        task.starred = true;
+        event.target.textContent = "star";
+      }
+    }
+  })
 }
 
 function createTaskItem(parent, property) {
