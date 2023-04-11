@@ -252,15 +252,16 @@ export function displayTask(tasks, targetProjectId) {
   const taskArea = document.getElementById("displayed-tasks");
   tasks.forEach((task => {
     const taskDiv = document.createElement("div");
+    taskDiv.dataset.taskId = task.taskId;
     // Convert date to human readable
     const formattedDate = format(task.date, "MMMM do yyyy");
     const properties = [task.name, task.desc, formattedDate];
     const taskDetails = document.createElement("div");
     taskDetails.classList.add("task-details");
-    createTaskItem(taskDetails, task.name);
-    createTaskItem(taskDetails, task.desc);
+    createTaskItem(taskDetails, task.name, "task-item-name");
+    createTaskItem(taskDetails, task.desc, "task-item-desc");
     taskDiv.append(taskDetails);
-    createTaskItem(taskDiv, formattedDate);
+    createTaskItem(taskDiv, formattedDate, "task-item-date");
     createTaskStar(taskDiv, task.starred, task) // Add icon for starred
     taskArea.appendChild(taskDiv);
   }));
@@ -302,10 +303,40 @@ function toggleStarDiv(event) {
   })
 }
 
-function createTaskItem(parent, property) {
+function createTaskItem(parent, property, className) {
   const taskProperty = document.createElement("p");
+  taskProperty.classList.add(className);
   taskProperty.textContent = property;
+  taskProperty.addEventListener("click", editInPlace);
   parent.appendChild(taskProperty);
+}
+
+// TODO: Add logic to add and cancel buttons
+function editInPlace(event) {
+  const targetTaskId = parseInt(event.target.parentElement.parentElement.dataset.taskId);
+  const old = event.target.textContent; // save old
+  event.target.textContent = ""; // clear old
+  const input = document.createElement("input");
+  input.dataset.taskId = targetTaskId;
+  input.setAttribute("type", "text");
+  input.setAttribute("placeholder", old);
+  const confirm = document.createElement("span");
+  confirm.classList.add("material-icons");
+  confirm.textContent = "check_circle";
+  confirm.addEventListener("click", changeTaskDetail);
+  const cancel = document.createElement("span");
+  cancel.classList.add("material-icons");
+  cancel.textContent = "cancel";
+  cancel.addEventListener("click", cancelTaskDetail)
+  event.target.append(input, confirm, cancel);
+}
+
+function changeTaskDetail(event) {
+  event.stopPropagation();
+}
+
+function cancelTaskDetail(event) {
+  event.stopPropagation();
 }
 
 function clearTasks() {
