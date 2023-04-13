@@ -10,6 +10,12 @@ export class Task {
   }
   toggleStarState = function() {
     this.starred = !starred;
-  }
+  };
+  rename = function(newName) {
+    this.name = newName;
+  };
+  changeDesc = function(newDesc) {
+    this.desc = newDesc;
+  };
 }
 

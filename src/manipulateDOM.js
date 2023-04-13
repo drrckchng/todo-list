@@ -340,11 +340,22 @@ function changeTaskDetail(event) {
   const newValue = event.target.previousSibling.value;
   // if input value is NOT empty
   if (newValue !== "") {
+    const targetClassName = event.target.parentElement.className;
+    const targetTaskId = parseInt(event.target.parentElement.parentElement.parentElement.dataset.taskId);
     event.target.parentElement.textContent = newValue;
-    if (event.target.parentElement.className === "task-item-name") {
+    let targetTask;
+    // Grab right task object
+    tasksTracker.forEach(task => {
+      if (task.taskId === targetTaskId) {
+        targetTask = task;
+      }
+    });
+    if (targetClassName === "task-item-name") {
       // change task name
+      targetTask.rename(newValue);
     } else {
       // change task desc
+      targetTask.changeDesc(newValue);
     }
   } else {
     alert("Enter a new value");
