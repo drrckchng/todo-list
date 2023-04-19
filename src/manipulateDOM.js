@@ -318,39 +318,27 @@ function editInPlace(event) {
   }
   const old = event.target.textContent; // save old
   event.target.textContent = ""; // clear old
+
+  const input = document.createElement("input");
+  input.dataset.taskId = targetTaskId;
   // If target is task name or desc...
   if (event.target.parentElement.className === "task-details") {
-    const input = document.createElement("input");
-    input.dataset.taskId = targetTaskId;
     input.setAttribute("type", "text");
     input.setAttribute("placeholder", old);
-    const confirm = document.createElement("span");
-    confirm.classList.add("material-icons");
-    confirm.textContent = "check_circle";
-    confirm.addEventListener("click", changeTaskDetail);
-    const cancel = document.createElement("span");
-    cancel.classList.add("material-icons");
-    cancel.textContent = "cancel";
-    cancel.addEventListener("click", (event) => {
-      cancelTaskDetail(event, old);
-    });
-    event.target.append(input, confirm, cancel);
   } else { // is date
-    const input = document.createElement("input");
-    input.dataset.taskId = targetTaskId;
     input.setAttribute("type", "date");
-    const confirm = document.createElement("span");
-    confirm.classList.add("material-icons");
-    confirm.textContent = "check_circle";
-    confirm.addEventListener("click", changeTaskDetail);
-    const cancel = document.createElement("span");
-    cancel.classList.add("material-icons");
-    cancel.textContent = "cancel";
-    cancel.addEventListener("click", (event) => {
-      cancelTaskDetail(event, old);
-    });
-    event.target.append(input, confirm, cancel);
   }
+  const confirm = document.createElement("span");
+  confirm.classList.add("material-icons");
+  confirm.textContent = "check_circle";
+  confirm.addEventListener("click", changeTaskDetail);
+  const cancel = document.createElement("span");
+  cancel.classList.add("material-icons");
+  cancel.textContent = "cancel";
+  cancel.addEventListener("click", (event) => {
+    cancelTaskDetail(event, old);
+  });
+  event.target.append(input, confirm, cancel);
 }
 
 // TODO: Check if to-be-edited element is the date input
