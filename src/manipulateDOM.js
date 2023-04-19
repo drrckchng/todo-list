@@ -357,6 +357,7 @@ function editInPlace(event) {
 // TODO: Check if to-be-edited element is the date input
 // TODO: Pass date as date object into correct task object
 // TODO: Convert input date into formatted text
+// TODO: Check if click is description to allow blanks
 function changeTaskDetail(event) {
   let newValue = event.target.previousSibling.value;
   // if clicked on element is date...
