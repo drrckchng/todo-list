@@ -1,6 +1,6 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
 import { checkValidProject, checkValidTask, renameProject, tasksTracker } from './createItems.js';
-import { format } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 export function addListeners() {
   const filterTaskButtons = Array.from(document.querySelector(".side-bar .tasks").children);
@@ -312,7 +312,11 @@ function createTaskItem(parent, property, className) {
 }
 
 function editInPlace(event) {
-  const targetTaskId = parseInt(event.target.parentElement.parentElement.dataset.taskId);
+  let targetTaskId = parseInt(event.target.parentElement.parentElement.dataset.taskId);
+  // if target task id is no valid, search for it just one parent up
+  if (isNaN(targetTaskId)) {
+    targetTaskId = parseInt(event.target.parentElement.dataset.taskId);
+  }
   const old = event.target.textContent; // save old
   event.target.textContent = ""; // clear old
   // If target is task name or desc...
@@ -334,6 +338,7 @@ function editInPlace(event) {
     event.target.append(input, confirm, cancel);
   } else { // is date
     const input = document.createElement("input");
+    input.dataset.taskId = targetTaskId;
     input.setAttribute("type", "date");
     const confirm = document.createElement("span");
     confirm.classList.add("material-icons");
@@ -353,7 +358,15 @@ function editInPlace(event) {
 // TODO: Pass date as date object into correct task object
 // TODO: Convert input date into formatted text
 function changeTaskDetail(event) {
-  const newValue = event.target.previousSibling.value;
+  let newValue = event.target.previousSibling.value;
+  // if clicked on element is date...
+  if (event.target.previousSibling.type === 'date') {
+    // const newDateObj = parse(newValue);
+    // console.log(newDateObj);
+    // create date object from date string in newvalue var
+    // change date property of target task object
+    // format the date to correct format using date-fns
+  }
   // if input value is NOT empty
   if (newValue !== "") {
     const targetClassName = event.target.parentElement.className;
@@ -369,9 +382,11 @@ function changeTaskDetail(event) {
     if (targetClassName === "task-item-name") {
       // change task name
       targetTask.rename(newValue);
-    } else {
+    } else if (targetClassName === "task-item-desc") {
       // change task desc
       targetTask.changeDesc(newValue);
+    } else if (targetClassName === "task-item-date") {
+      // change task date
     }
   } else {
     alert("Enter a new value");
