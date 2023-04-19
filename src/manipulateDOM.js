@@ -337,7 +337,9 @@ function editInPlace(event) {
   const confirm = document.createElement("span");
   confirm.classList.add("material-icons");
   confirm.textContent = "check_circle";
-  confirm.addEventListener("click", changeTaskDetail);
+  confirm.addEventListener("click", (event) => {
+    changeTaskDetail(event, targetTaskId);
+  });
 
   // create cancel button
   const cancel = document.createElement("span");
@@ -353,8 +355,13 @@ function editInPlace(event) {
 // TODO: Pass date as date object into correct task object
 // TODO: Convert input date into formatted text
 // TODO: Check if click is description to allow blanks
-function changeTaskDetail(event) {
+function changeTaskDetail(event, targetTaskId) {
+
+  // const targetTaskId = parseInt(event.target.parentElement.parentElement.parentElement.dataset.taskId);
+
+  // Grab input value
   let newValue = event.target.previousSibling.value;
+
   // if clicked on element is date...
   if (event.target.previousSibling.type === 'date') {
     // const newDateObj = parse(newValue);
@@ -366,7 +373,6 @@ function changeTaskDetail(event) {
   // if input value is NOT empty
   if (newValue !== "") {
     const targetClassName = event.target.parentElement.className;
-    const targetTaskId = parseInt(event.target.parentElement.parentElement.parentElement.dataset.taskId);
     event.target.parentElement.textContent = newValue;
     let targetTask;
     // Grab correct task object
