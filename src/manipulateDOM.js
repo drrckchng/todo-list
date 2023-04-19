@@ -311,7 +311,6 @@ function createTaskItem(parent, property, className) {
   parent.appendChild(taskProperty);
 }
 
-// TODO: Add logic to add and cancel buttons
 function editInPlace(event) {
   const targetTaskId = parseInt(event.target.parentElement.parentElement.dataset.taskId);
   const old = event.target.textContent; // save old
@@ -334,7 +333,19 @@ function editInPlace(event) {
     });
     event.target.append(input, confirm, cancel);
   } else { // is date
-    // add date input...
+    const input = document.createElement("input");
+    input.setAttribute("type", "date");
+    const confirm = document.createElement("span");
+    confirm.classList.add("material-icons");
+    confirm.textContent = "check_circle";
+    confirm.addEventListener("click", changeTaskDetail);
+    const cancel = document.createElement("span");
+    cancel.classList.add("material-icons");
+    cancel.textContent = "cancel";
+    cancel.addEventListener("click", (event) => {
+      cancelTaskDetail(event, old);
+    });
+    event.target.append(input, confirm, cancel);
   }
 }
 
