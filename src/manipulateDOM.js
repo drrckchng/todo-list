@@ -316,11 +316,15 @@ function editInPlace(event) {
   if (isNaN(targetTaskId)) {
     targetTaskId = parseInt(event.target.parentElement.dataset.taskId);
   }
-  const old = event.target.textContent; // save old
-  event.target.textContent = ""; // clear old
 
+  // save old values and clear
+  const old = event.target.textContent;
+  event.target.textContent = "";
+
+  // create input
   const input = document.createElement("input");
   input.dataset.taskId = targetTaskId;
+
   // If target is task name or desc...
   if (event.target.parentElement.className === "task-details") {
     input.setAttribute("type", "text");
@@ -328,10 +332,14 @@ function editInPlace(event) {
   } else { // is date
     input.setAttribute("type", "date");
   }
+
+  // create confirm button
   const confirm = document.createElement("span");
   confirm.classList.add("material-icons");
   confirm.textContent = "check_circle";
   confirm.addEventListener("click", changeTaskDetail);
+
+  // create cancel button
   const cancel = document.createElement("span");
   cancel.classList.add("material-icons");
   cancel.textContent = "cancel";
