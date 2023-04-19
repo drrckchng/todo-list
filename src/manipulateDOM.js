@@ -329,7 +329,9 @@ function editInPlace(event) {
     const cancel = document.createElement("span");
     cancel.classList.add("material-icons");
     cancel.textContent = "cancel";
-    cancel.addEventListener("click", cancelTaskDetail)
+    cancel.addEventListener("click", (event) => {
+      cancelTaskDetail(event, old);
+    });
     event.target.append(input, confirm, cancel);
   } else { // is date
     // add date input...
@@ -363,7 +365,8 @@ function changeTaskDetail(event) {
   event.stopPropagation();
 }
 
-function cancelTaskDetail(event) {
+function cancelTaskDetail(event, oldData) {
+  event.target.parentElement.textContent = oldData; // Clear input element
   event.stopPropagation();
 }
 
