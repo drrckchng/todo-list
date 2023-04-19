@@ -349,6 +349,9 @@ function editInPlace(event) {
   }
 }
 
+// TODO: Check if to-be-edited element is the date input
+// TODO: Pass date as date object into correct task object
+// TODO: Convert input date into formatted text
 function changeTaskDetail(event) {
   const newValue = event.target.previousSibling.value;
   // if input value is NOT empty
@@ -357,7 +360,7 @@ function changeTaskDetail(event) {
     const targetTaskId = parseInt(event.target.parentElement.parentElement.parentElement.dataset.taskId);
     event.target.parentElement.textContent = newValue;
     let targetTask;
-    // Grab right task object
+    // Grab correct task object
     tasksTracker.forEach(task => {
       if (task.taskId === targetTaskId) {
         targetTask = task;
