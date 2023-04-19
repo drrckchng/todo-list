@@ -132,7 +132,7 @@ export function addProjectDiv(project) {
   projectItem.click(); // click on project after creation
 }
 
-function makeProjectOpts(item) {
+function makeProjectOpts(item, event) {
   const targetProjectId = item.dataset.projectId;
   const optsDiv = document.createElement("div");
   optsDiv.classList.add("dropdown");
@@ -166,7 +166,6 @@ function makeProjectOpts(item) {
     }
   })
 
-  // TODO: Stop propagation on icons
   // Click listener to stop propgation on icons
   document.querySelectorAll(".opt-icon").forEach(icon => {
     icon.addEventListener("click", function() {
