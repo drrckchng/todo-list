@@ -351,18 +351,21 @@ function editInPlace(event) {
   event.target.append(input, confirm, cancel);
 }
 
-// TODO: Check if click is description to allow blanks
 function changeTaskDetail(event, targetTaskId) {
-
-  // const targetTaskId = parseInt(event.target.parentElement.parentElement.parentElement.dataset.taskId);
 
   // Grab input value
   let newValue = event.target.previousSibling.value;
 
+  const targetClassName = event.target.parentElement.className;
+
+  // Allow empty description
+  if (targetClassName === 'task-item-desc' && newValue === '') {
+    newValue = "...";
+  }
+
   // if input value is NOT empty
   if (newValue !== "") {
 
-    const targetClassName = event.target.parentElement.className;
 
     let targetTask;
 

@@ -27,9 +27,14 @@ export function checkValidProject(event) {
 export function checkValidTask(event) {
   const taskProperties = Array.from(event.target.form).splice(0, 4);
   const taskName = taskProperties[0].value;
-  const taskDesc = taskProperties[1].value;
+  let taskDesc = taskProperties[1].value;
   const taskDate = taskProperties[2].value;
   const taskStarred = taskProperties[3].checked;
+
+  if (taskDesc === "") {
+    taskDesc = "...";
+  }
+
   if ((taskName !== "") && (taskDate !== "")) {
     const taskDateConvert = parseISO(taskDate); // convert date string to date object
     createTask(taskName, taskDesc, taskDateConvert, taskStarred, parseInt(event.target.dataset.projectId));
