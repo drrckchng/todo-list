@@ -145,7 +145,9 @@ function makeProjectOpts(item, event) {
   const renameOptLabel = document.createElement("p");
   renameOptLabel.textContent = "Rename";
   renameOpt.append(renameOptIcon, renameOptLabel);
-  renameOpt.addEventListener("click", passRenameProject);
+  renameOpt.addEventListener("click", (event) => {
+    passRenameProject(event, targetProjectId);
+  });
 
   const deleteOpt = document.createElement("a");
   deleteOpt.setAttribute("href", "#delete");
@@ -180,13 +182,12 @@ function toggleModal() {
   overlay.classList.toggle("hidden");
 }
 
-function passRenameProject(event) {
+function passRenameProject(event, targetProjectId) {
   toggleVis(event.target.parentElement);
   toggleModal();
 
-  const projectId = parseInt(event.target.parentElement.parentElement.dataset.projectId);
   const addButton = document.querySelector(".modal-add-button");
-  addButton.dataset.projectId = projectId;
+  addButton.dataset.projectId = targetProjectId;
   addButton.addEventListener("click", renameProject);
 
   event.stopPropagation();
