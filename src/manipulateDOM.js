@@ -360,13 +360,15 @@ function changeTaskDetail(event, targetTaskId) {
   // Grab input value
   let newValue = event.target.previousSibling.value;
 
-  // if clicked on element is date...
-  if (event.target.previousSibling.type === 'date') {
-    const newDateObj = parse(newValue, "yyyy-MM-dd", new Date());
-    newValue = format(newDateObj, "MMMM do yyyy");
-  }
   // if input value is NOT empty
   if (newValue !== "") {
+
+    // if clicked on element is date...
+    if (event.target.previousSibling.type === 'date') {
+      const newDateObj = parse(newValue, "yyyy-MM-dd", new Date());
+      newValue = format(newDateObj, "MMMM do yyyy");
+    }
+
     const targetClassName = event.target.parentElement.className;
     event.target.parentElement.textContent = newValue;
     let targetTask;
@@ -376,6 +378,7 @@ function changeTaskDetail(event, targetTaskId) {
         targetTask = task;
       }
     });
+
     if (targetClassName === "task-item-name") {
       // change task name
       targetTask.rename(newValue);
@@ -385,7 +388,9 @@ function changeTaskDetail(event, targetTaskId) {
     } else if (targetClassName === "task-item-date") {
       // change task date
     }
+
     printTasks();
+
   } else {
     alert("Enter a new value");
   }
