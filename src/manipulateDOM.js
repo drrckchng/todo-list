@@ -351,9 +351,7 @@ function editInPlace(event) {
   event.target.append(input, confirm, cancel);
 }
 
-// TODO: Check if to-be-edited element is the date input
 // TODO: Pass date as date object into correct task object
-// TODO: Convert input date into formatted text
 // TODO: Check if click is description to allow blanks
 function changeTaskDetail(event, targetTaskId) {
 
@@ -364,11 +362,8 @@ function changeTaskDetail(event, targetTaskId) {
 
   // if clicked on element is date...
   if (event.target.previousSibling.type === 'date') {
-    // const newDateObj = parse(newValue);
-    // console.log(newDateObj);
-    // create date object from date string in newvalue var
-    // change date property of target task object
-    // format the date to correct format using date-fns
+    const newDateObj = parse(newValue, "yyyy-MM-dd", new Date());
+    newValue = format(newDateObj, "MMMM do yyyy");
   }
   // if input value is NOT empty
   if (newValue !== "") {
@@ -390,6 +385,7 @@ function changeTaskDetail(event, targetTaskId) {
     } else if (targetClassName === "task-item-date") {
       // change task date
     }
+    printTasks();
   } else {
     alert("Enter a new value");
   }
@@ -406,4 +402,9 @@ function clearTasks() {
   const buttonArea = document.getElementById("add-task");
   taskArea.textContent = "";
   buttonArea.textContent = "";
+}
+
+function printTasks() {
+  console.log("Printing Tasks");
+  console.log(tasksTracker);
 }
