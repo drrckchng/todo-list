@@ -12,7 +12,6 @@ export function addListeners() {
   document.querySelector(".modal-cancel-button").addEventListener("click", toggleModal);
 }
 
-// TODO: Add listener to stars to toggle "starred" state
 function addProjectForm() {
   const projectsList = document.getElementById("projects-list");
   const projectForm = document.createElement("form");
@@ -245,7 +244,6 @@ function toggleVis(event) {
 
 // TODO: Create option to mark task as done
 // TODO: Create options for task delete
-// TODO: Allow edit of task item on click
 export function displayTask(tasks, targetProjectId) {
   clearTasks();
   const taskArea = document.getElementById("displayed-tasks");
