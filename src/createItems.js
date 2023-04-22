@@ -54,9 +54,12 @@ export function renameProject(event) {
   renameProjectDiv(projectId, newName);
 }
 
-// TODO: Add a function call to delete all tasks matching projectId
+// TODO: Add a loop to delete all tasks matching projectId
 export function deleteProject(index) {
   projectsTracker.splice(index, 1);
+}
+
+export function deleteTask() {
 }
 
 export function createTask(name, desc, date, starred, targetProjectId) {
