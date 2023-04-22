@@ -17,5 +17,8 @@ export class Task {
   changeDesc = function(newDesc) {
     this.desc = newDesc;
   };
+  changeDate = function(newDate) {
+    this.date = newDate;
+  }
 }
 
