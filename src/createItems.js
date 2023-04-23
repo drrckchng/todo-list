@@ -55,7 +55,13 @@ export function renameProject(event) {
 }
 
 // TODO: Add a loop to delete all tasks matching projectId
-export function deleteProject(index) {
+export function deleteProject(projectId) {
+  let index;
+  for (let i = 0; i < projectsTracker.length; i++) {
+    if (projectsTracker[i].projectId === projectId) {
+      index = i;
+    }
+  }
   projectsTracker.splice(index, 1);
 }
 

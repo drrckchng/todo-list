@@ -1,5 +1,5 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
-import { checkValidProject, checkValidTask, renameProject, tasksTracker } from './createItems.js';
+import { checkValidProject, checkValidTask, deleteProject, renameProject, tasksTracker } from './createItems.js';
 import { format, parse } from 'date-fns';
 
 export function addListeners() {
@@ -157,6 +157,9 @@ function makeProjectOpts(item, event) {
   const deleteOptLabel = document.createElement("p");
   deleteOptLabel.textContent = "Delete";
   deleteOpt.append(deleteOptIcon, deleteOptLabel);
+  deleteOpt.addEventListener("click", (event) => {
+    passDeleteProject(event, targetProjectId);
+  });
 
   optsDiv.append(renameOpt, deleteOpt);
 
@@ -191,6 +194,23 @@ function passRenameProject(event, targetProjectId) {
   addButton.addEventListener("click", renameProject);
 
   event.stopPropagation();
+}
+
+function passDeleteProject(event, targetProjectId) {
+  toggleVis(event.target.parentElement);
+  deleteProject(targetProjectId);
+  deleteProjectDiv(targetProjectId);
+
+  event.stopPropagation();
+}
+
+function deleteProjectDiv(targetProjectId) {
+  const projectDivs = document.querySelectorAll(".project-item");
+  projectDivs.forEach(div => {
+    if (div.dataset.projectId === targetProjectId) {
+      div.remove();
+    }
+  })
 }
 
 export function renameProjectDiv(projectId, newName) {
