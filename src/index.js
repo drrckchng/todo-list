@@ -3,7 +3,7 @@ import "@fontsource/lato";
 import "@fontsource/lato/900.css";
 import 'material-icons/iconfont/material-icons.css';
 import { projectsTracker, tasksTracker, createProject, createTask, deleteProject } from './createItems.js';
-import { addListeners, createRenameForm } from './manipulateDOM.js';
+import { addListeners, clickAllTasks, createRenameForm } from './manipulateDOM.js';
 
 // Initial page load
 createRenameForm(); // create modal form for rename
@@ -13,7 +13,7 @@ createProject("Breakfast");
 
 // Click on "All Tasks" button
 window.onload = function() {
-  document.getElementById("filter-all").click();
+  clickAllTasks();
 }
 
 // Test cases

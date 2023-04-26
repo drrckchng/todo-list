@@ -426,3 +426,6 @@ function clearTasks() {
   buttonArea.textContent = "";
 }
 
+export function clickAllTasks() {
+  document.getElementById("filter-all").click();
+}
