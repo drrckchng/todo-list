@@ -1,6 +1,6 @@
 import { Task } from './taskClass.js';
 import { Project } from './projectClass.js';
-import { addProjectDiv, deleteProjectForm, deleteTaskForm, renameProjectDiv } from './manipulateDOM.js';
+import { addProjectDiv, clickAllTasks, deleteProjectForm, deleteTaskForm, renameProjectDiv } from './manipulateDOM.js';
 import { parseISO } from 'date-fns';
 import { filterProjectTasks } from './filter.js';
 
@@ -68,6 +68,7 @@ export function deleteProject(projectId) {
       tasksTracker.splice(i, 1);
     }
   }
+  clickAllTasks();
 }
 
 export function deleteTask(targetTaskId) {
