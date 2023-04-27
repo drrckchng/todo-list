@@ -264,7 +264,6 @@ function toggleVis(event) {
   }
 }
 
-// TODO: Create option to mark task as done
 // TODO: Create options for task delete
 export function displayTask(tasks, targetProjectId) {
   clearTasks();
@@ -274,7 +273,12 @@ export function displayTask(tasks, targetProjectId) {
     taskDiv.dataset.taskId = task.taskId;
     // Convert date to human readable
     const formattedDate = format(task.date, "MMMM do yyyy");
-    const properties = [task.name, task.desc, formattedDate];
+
+    const taskComplete = document.createElement("div");
+    taskComplete.classList.add("task-complete");
+    createTaskCheck(taskComplete, task.complete, task);
+    taskDiv.append(taskComplete);
+
     const taskDetails = document.createElement("div");
     taskDetails.classList.add("task-details");
     createTaskItem(taskDetails, task.name, "task-item-name");
@@ -292,6 +296,37 @@ export function displayTask(tasks, targetProjectId) {
     buttonDiv.appendChild(addTaskButton);
     addNewTaskListener(addTaskButton);
   }
+}
+
+function createTaskCheck(parent, property, task) {
+  const taskId = task.taskId;
+  const check = document.createElement("span");
+  check.classList.add("material-icons");
+  check.dataset.complete = task.complete;
+  if (property) {
+    check.textContent = "radio_button_checked";
+  } else {
+    check.textContent = "radio_button_unchecked";
+  }
+  check.addEventListener("click", function(event) {
+    toggleCheck(event, taskId);
+  });
+  parent.appendChild(check);
+}
+
+// TODO: Change task item visually to indicate completeted task upon TRUE
+function toggleCheck(event, taskId) {
+  tasksTracker.forEach(task => {
+    if (task.taskId === taskId) {
+      if (task.complete === true) {
+        task.complete = false;
+        event.target.textContent = "radio_button_unchecked";
+      } else {
+        task.complete = true;
+        event.target.textContent = "radio_button_checked";
+      }
+    }
+  });
 }
 
 function createTaskStar(parent, property, task) {
@@ -319,7 +354,7 @@ function toggleStarDiv(event) {
         event.target.textContent = "star";
       }
     }
-  })
+  });
 }
 
 function createTaskItem(parent, property, className) {

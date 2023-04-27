@@ -6,6 +6,7 @@ export class Task {
     this.date = date;
     this.starred = starred;
     this.taskId = taskId;
+    this.complete = false;
     taskId += 1;
   }
   toggleStarState = function() {
