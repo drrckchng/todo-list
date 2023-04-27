@@ -270,3 +270,12 @@ button {
   cursor: pointer;
 }
 
+.task-complete {
+  display: flex;
+}
+
+#displayed-tasks .task-complete span {
+  margin-left: 0px;
+  margin-right: 0.5em;
+}
+
