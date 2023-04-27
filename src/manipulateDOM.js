@@ -171,7 +171,7 @@ function makeProjectOpts(item, event) {
   })
 
   // Click listener to stop propgation on icons
-  // TODO: Fix to allow clicking on item to execute function
+  // TODO: Fix to allow clicking on icon to execute function
   document.querySelectorAll(".opt-icon").forEach(icon => {
     icon.addEventListener("click", function(event) {
       event.stopPropagation();
