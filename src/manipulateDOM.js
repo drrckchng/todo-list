@@ -304,6 +304,7 @@ export function displayTask(tasks, targetProjectId) {
   }
 }
 
+// TODO: Add event listener to delete task object and update visually
 function createTaskDelete(parent, task) {
   const taskId = task.taskId;
   const deleteButton = document.createElement("span");
