@@ -270,7 +270,8 @@ button {
   cursor: pointer;
 }
 
-.task-complete {
+.task-complete,
+.task-delete {
   display: flex;
 }
 

@@ -286,6 +286,12 @@ export function displayTask(tasks, targetProjectId) {
     taskDiv.append(taskDetails);
     createTaskItem(taskDiv, formattedDate, "task-item-date");
     createTaskStar(taskDiv, task.starred, task) // Add icon for starred
+
+    const taskDelete = document.createElement("div");
+    taskDelete.classList.add("task-delete");
+    createTaskDelete(taskDelete, task);
+    taskDiv.append(taskDelete);
+
     taskArea.appendChild(taskDiv);
   }));
   if (targetProjectId !== undefined) {
@@ -296,6 +302,14 @@ export function displayTask(tasks, targetProjectId) {
     buttonDiv.appendChild(addTaskButton);
     addNewTaskListener(addTaskButton);
   }
+}
+
+function createTaskDelete(parent, task) {
+  const taskId = task.taskId;
+  const deleteButton = document.createElement("span");
+  deleteButton.classList.add("material-icons");
+  deleteButton.textContent = "delete";
+  parent.appendChild(deleteButton);
 }
 
 function createTaskCheck(parent, property, task) {
