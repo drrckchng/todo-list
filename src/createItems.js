@@ -54,7 +54,6 @@ export function renameProject(event) {
   renameProjectDiv(projectId, newName);
 }
 
-// TODO: Click on all tasks button upon deletion to "refresh"
 export function deleteProject(projectId) {
   let index;
   for (let i = 0; i < projectsTracker.length; i++) {
