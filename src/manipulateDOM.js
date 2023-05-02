@@ -108,7 +108,7 @@ function addTaskForm(event) {
 }
 
 export function deleteProjectForm(event) {
-  event.target.parentElement.remove();
+  event.target.parentElement.parentElement.remove();
 }
 
 export function deleteTaskForm(event) {
