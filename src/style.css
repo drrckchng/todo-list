@@ -74,9 +74,39 @@ li {
   font-size: 1.3em;
 }
 
-.projects-list {
+#projects-list {
   margin: 0;
   padding: 0;
+}
+
+#projects-list form {
+  display: flex;
+  flex-direction: column;
+}
+
+#projects-list form > input {
+  height: 1.7rem;
+}
+
+#projects-list form div input,
+#projects-list form div button {
+  color: var(--white-text);
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  display: inline-block;
+}
+
+#projects-list form div input {
+  background-color: var(--green-accent);
+}
+
+#projects-list form div button {
+  background-color: #bd2a2a;
 }
 
 .project-item {
