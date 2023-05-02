@@ -71,6 +71,11 @@ export function deleteProject(projectId) {
 }
 
 export function deleteTask(targetTaskId) {
+  for (let i = tasksTracker.length - 1; i >= 0; i--) {
+    if (tasksTracker[i].taskId === targetTaskId) {
+      tasksTracker.splice(i, 1);
+    }
+  }
 }
 
 export function createTask(name, desc, date, starred, targetProjectId) {

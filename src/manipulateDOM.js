@@ -1,5 +1,5 @@
 import { filterTasks, filterProjectTasks } from './filter.js';
-import { checkValidProject, checkValidTask, deleteProject, renameProject, tasksTracker } from './createItems.js';
+import { checkValidProject, checkValidTask, deleteProject, deleteTask, renameProject, tasksTracker } from './createItems.js';
 import { format, parse } from 'date-fns';
 
 export function addListeners() {
@@ -304,13 +304,21 @@ export function displayTask(tasks, targetProjectId) {
   }
 }
 
-// TODO: Add event listener to delete task object and update visually
 function createTaskDelete(parent, task) {
   const taskId = task.taskId;
   const deleteButton = document.createElement("span");
   deleteButton.classList.add("material-icons");
   deleteButton.textContent = "delete";
   parent.appendChild(deleteButton);
+
+  deleteButton.addEventListener("click", function(event) {
+    deleteTaskDiv(event, taskId);
+  });
+}
+
+function deleteTaskDiv(event, targetTaskId) {
+  event.target.parentElement.parentElement.remove();
+  deleteTask(targetTaskId);
 }
 
 function createTaskCheck(parent, property, task) {
