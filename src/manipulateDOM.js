@@ -327,7 +327,7 @@ function createTaskCheck(parent, property, task) {
   check.classList.add("material-icons");
   check.dataset.complete = task.complete;
   if (property) {
-    check.textContent = "radio_button_checked";
+    check.textContent = "check_circle";
   } else {
     check.textContent = "radio_button_unchecked";
   }
@@ -346,7 +346,7 @@ function toggleCheck(event, taskId) {
         event.target.textContent = "radio_button_unchecked";
       } else {
         task.complete = true;
-        event.target.textContent = "radio_button_checked";
+        event.target.textContent = "check_circle";
       }
     }
   });
