@@ -29,7 +29,10 @@ function addProjectForm() {
   deleteButton.textContent = "Cancel";
   deleteButton.addEventListener("click", deleteProjectForm);
 
-  projectForm.append(input, confirmButton, deleteButton);
+  const buttonDiv = document.createElement("div");
+  buttonDiv.append(confirmButton, deleteButton);
+
+  projectForm.append(input, buttonDiv);
   projectsList.appendChild(projectForm);
 }
 
