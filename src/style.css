@@ -274,6 +274,23 @@ button {
   padding: 1em;
 }
 
+#displayed-tasks form .add-task-button-div input,
+#displayed-tasks form .add-task-button-div button {
+  color: var(--white-text);
+  background-color: #bd2a2a;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  border-radius: 5px;
+  text-align: center;
+  margin-top: 0.5rem;
+  padding: 0.3rem;
+  display: inline-block;
+}
+#displayed-tasks form .add-task-button-div input {
+  background-color: var(--green-accent);
+}
+
 .task-details {
   flex: 1;
 }

@@ -101,6 +101,7 @@ function addTaskForm(event) {
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "Cancel";
   cancelButton.addEventListener("click", deleteTaskForm)
+  submitDiv.classList.add("add-task-button-div");
   submitDiv.append(submitInput, cancelButton);
 
   newTaskForm.append(nameDiv, descDiv, dateDiv, starredDiv, submitDiv);
