@@ -7,11 +7,19 @@ import { filterProjectTasks } from './filter.js';
 export const projectsTracker = [];
 export const tasksTracker = [];
 
-// TODO: Add projects to local storage
+// TODO: Update localStorage
+function updateProjectsLocalStorage() {
+  console.log("update projects ls");
+}
+
+function updateTasksLocalStorage() {
+  console.log("update tasks ls");
+}
 
 export function createProject(name) {
   const project = new Project(name);
   projectsTracker.push(project);
+  updateProjectsLocalStorage();
   addProjectDiv(project);
 }
 
@@ -54,6 +62,7 @@ export function renameProject(event) {
   const projectId = parseInt(event.target.dataset.projectId);
   projectsTracker[projectId].rename(newName);
   renameProjectDiv(projectId, newName);
+  updateProjectsLocalStorage();
 }
 
 export function deleteProject(projectId) {
@@ -63,12 +72,14 @@ export function deleteProject(projectId) {
       index = i;
     }
   }
+  updateProjectsLocalStorage();
   projectsTracker.splice(index, 1);
   for (let i = tasksTracker.length - 1; i >= 0; i--) {
     if (tasksTracker[i].projectId === parseInt(projectId)) {
       tasksTracker.splice(i, 1);
     }
   }
+  updateTasksLocalStorage();
   clickAllTasks();
 }
 
@@ -78,6 +89,7 @@ export function deleteTask(targetTaskId) {
       tasksTracker.splice(i, 1);
     }
   }
+  updateTasksLocalStorage();
 }
 
 export function createTask(name, desc, date, starred, targetProjectId) {
@@ -85,5 +97,6 @@ export function createTask(name, desc, date, starred, targetProjectId) {
   // get currently selected project ID from DOM
   task.projectId = targetProjectId;
   tasksTracker.push(task);
+  updateTasksLocalStorage();
 }
 
