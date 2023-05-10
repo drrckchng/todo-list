@@ -7,8 +7,10 @@ import { filterProjectTasks } from './filter.js';
 export const projectsTracker = [];
 export const tasksTracker = [];
 
+// TODO: Add projects to local storage
+
 export function createProject(name) {
-  const project = new Project(name); // project name should be pulled from DOM on creation
+  const project = new Project(name);
   projectsTracker.push(project);
   addProjectDiv(project);
 }

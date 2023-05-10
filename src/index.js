@@ -8,6 +8,9 @@ import { addListeners, clickAllTasks, createRenameForm } from './manipulateDOM.j
 // Initial page load
 createRenameForm(); // create modal form for rename
 addListeners();
+
+// TODO: Load JSON objects from localStorage
+
 createProject("Todo List");
 createProject("Breakfast");
 
