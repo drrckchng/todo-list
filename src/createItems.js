@@ -7,13 +7,12 @@ import { filterProjectTasks } from './filter.js';
 export const projectsTracker = [];
 export const tasksTracker = [];
 
-// TODO: Update localStorage
 function updateProjectsLocalStorage() {
-  console.log("update projects ls");
+  localStorage.setItem("projects", JSON.stringify(projectsTracker));
 }
 
 function updateTasksLocalStorage() {
-  console.log("update tasks ls");
+  localStorage.setItem("tasks", JSON.stringify(tasksTracker));
 }
 
 export function createProject(name) {

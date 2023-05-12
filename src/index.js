@@ -11,6 +11,7 @@ addListeners();
 
 // TODO: Load JSON objects from localStorage
 
+
 createProject("Todo List");
 createProject("Breakfast");
 
