@@ -2,28 +2,22 @@ import './style.css';
 import "@fontsource/lato";
 import "@fontsource/lato/900.css";
 import 'material-icons/iconfont/material-icons.css';
-import { projectsTracker, tasksTracker, createProject, createTask, deleteProject } from './createItems.js';
+import { projectsTracker, tasksTracker, createProject, createTask, deleteProject, populateTrackers } from './createItems.js';
 import { addListeners, clickAllTasks, createRenameForm } from './manipulateDOM.js';
 
 // Initial page load
 createRenameForm(); // create modal form for rename
 addListeners();
 
-// TODO: Load JSON objects from localStorage
+// Load default project if no previous storage detected
+if (projectsTracker.length === 0) {
+  createProject("Todo List");
+}
 
-
-createProject("Todo List");
-createProject("Breakfast");
+populateTrackers();
 
 // Click on "All Tasks" button
 window.onload = function() {
   clickAllTasks();
 }
 
-// Test cases
-createTask("Task One", "This is a task", new Date(), true, 0);
-createTask("Task Two", "This is a task", new Date(2023, 2, 1), false, 0);
-createTask("Eat cereal", "This is a task", new Date(2023, 2, 20), true, 1);
-createTask("Peel apple", "This is a task", new Date(2023, 2, 20), false, 1);
-console.log(projectsTracker);
-console.log(tasksTracker);

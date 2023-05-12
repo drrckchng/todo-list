@@ -15,6 +15,33 @@ function updateTasksLocalStorage() {
   localStorage.setItem("tasks", JSON.stringify(tasksTracker));
 }
 
+export function populateTrackers() {
+  loopTracker("projects");
+  loopTracker("tasks");
+}
+
+function loopTracker(type) {
+  const tracker = JSON.parse(localStorage.getItem(`${type}`));
+  if (tracker) {
+    tracker.forEach(element => {
+      if (type === "projects") {
+        projectsTracker.push(element);
+      } else {
+        tasksTracker.push(element);
+      }
+    });
+  }
+  convertDates();
+}
+
+function convertDates() {
+  tasksTracker.forEach(task => {
+    if (typeof task.date === "string") {
+      task.date = parseISO(task.date);
+    }
+  });
+}
+
 export function createProject(name) {
   const project = new Project(name);
   projectsTracker.push(project);
